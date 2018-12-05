@@ -21,7 +21,7 @@ class LoveController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：添加商品收藏
      */
     public function add(){
@@ -39,7 +39,7 @@ class LoveController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：用户收藏详情页
      */
     public function index(){
@@ -61,7 +61,7 @@ class LoveController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：删除收藏
      */
     public function del(){

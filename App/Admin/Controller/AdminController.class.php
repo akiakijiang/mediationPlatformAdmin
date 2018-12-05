@@ -14,7 +14,7 @@ class AdminController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：当前店铺所有管理员帐号列表
      */
     public function lists(){
@@ -29,7 +29,7 @@ class AdminController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：删除指定管理员
      */
     public function del(){
@@ -69,7 +69,7 @@ class AdminController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：添加编辑管理员帐号主方法
      */
     public function handle(){

@@ -21,7 +21,7 @@ class AddressController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：获取某一用户默认收货地址
      */
     public function get_one(){
@@ -43,7 +43,7 @@ class AddressController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：新增用户收货地址
      */
     public function add(){
@@ -77,7 +77,7 @@ class AddressController extends Controller {
 
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：计算运费
      */
     public function cale(){

@@ -15,7 +15,7 @@ class CommodityModel extends Model {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：获取推荐商品集合
      */
     public function get_redis($shopid){
@@ -33,7 +33,7 @@ class CommodityModel extends Model {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：获取推荐商品
      * @param $id
      *
@@ -53,7 +53,7 @@ class CommodityModel extends Model {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：获取某一商品
      * @param       $id   商品ID
      * @param array $array  返回字段
@@ -78,7 +78,7 @@ class CommodityModel extends Model {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：获取sku属性值
      */
     public function get_attr($sku,$id){
@@ -90,7 +90,7 @@ class CommodityModel extends Model {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：   库存 -1   ，销量 +1  ,总库存量-1
      * @param $orderid
      */
@@ -114,7 +114,7 @@ class CommodityModel extends Model {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：获取某商品总库存
      * @param $id  商品ID
      *
@@ -133,7 +133,7 @@ class CommodityModel extends Model {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能： 获取指定商品默认价格
      * @param $id  运费模版ID
      */

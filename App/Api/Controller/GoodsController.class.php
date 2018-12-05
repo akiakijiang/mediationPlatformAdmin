@@ -23,7 +23,7 @@ class GoodsController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：查看商品详情
      */
     public function detail(){
@@ -81,7 +81,7 @@ class GoodsController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：商品评价页面
      */
     public function comment(){
@@ -115,7 +115,7 @@ class GoodsController extends Controller {
 
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：新品推荐，按时间排序
      */
     public function xinpin(){
@@ -139,7 +139,7 @@ class GoodsController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：积分商城
      */
     public function jifen(){
@@ -177,7 +177,7 @@ class GoodsController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：搜索详情页
      */
     public function lists(){
@@ -209,7 +209,7 @@ class GoodsController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：获取属性值的价格和库存
      */
     public function get_attr(){
@@ -219,7 +219,7 @@ class GoodsController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：商品搜索页面
      */
     public function search(){

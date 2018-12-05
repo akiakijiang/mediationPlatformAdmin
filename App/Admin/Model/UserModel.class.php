@@ -20,7 +20,7 @@ class UserModel extends RelationModel {
     );
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：UID和opendi的转换
      */
     public function uid_to_openid($uid){

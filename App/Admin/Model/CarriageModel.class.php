@@ -16,7 +16,7 @@ class CarriageModel extends Model {
     );
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：获取该商家所有运费模版
      */
     public function get_all($id){
@@ -25,7 +25,7 @@ class CarriageModel extends Model {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：写入拓展表数据
      */
     protected function _after_insert($data, $options){

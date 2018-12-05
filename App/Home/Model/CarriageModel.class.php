@@ -24,7 +24,7 @@ class CarriageModel extends RelationModel {
     );
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：获取运费价格
      * @param $id 运费模版ID
      * @param $address 用户收货地址

@@ -14,7 +14,7 @@ class UserController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：会员列表
      */
     public function lists(){
@@ -38,7 +38,7 @@ class UserController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：删除会员
      */
     public function del(){
@@ -58,7 +58,7 @@ class UserController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：查看分销层级关系
      */
     public function fenxiao(){

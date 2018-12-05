@@ -19,7 +19,7 @@ class ShopModel extends Model {
     );
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能： 获取某用户数据
      * @param $id  用户ID
      *

@@ -20,7 +20,7 @@ class CartController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：购物车详情页面
      */
     public function index(){
@@ -42,7 +42,7 @@ class CartController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：删除购物车
      */
     public function del(){
@@ -56,7 +56,7 @@ class CartController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：加入购物车
      */
     public function add_cart(){
@@ -98,7 +98,7 @@ class CartController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：购物车加减
      * @param int $type 1为减，2为加
      */

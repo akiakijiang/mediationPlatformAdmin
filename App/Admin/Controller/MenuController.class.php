@@ -15,7 +15,7 @@ class MenuController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：编辑页面
      */
     public function edit(){
@@ -35,7 +35,7 @@ class MenuController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：保存菜单
      */
     public function save(){

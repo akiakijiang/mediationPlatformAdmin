@@ -46,7 +46,7 @@ class LoveModel extends RelationModel {
     );
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：  判断商品是否已经收藏
      * @param $member
      *

@@ -31,7 +31,7 @@ class OrderCommoditySnopModel extends RelationModel {
     );
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：获取该商品是什么类型
      */
     public function get_type($snopid){

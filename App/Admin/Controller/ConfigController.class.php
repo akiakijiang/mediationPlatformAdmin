@@ -15,7 +15,7 @@ class ConfigController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：编辑页面
      */
     public function edit(){
@@ -26,7 +26,7 @@ class ConfigController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：修改配置
      */
     public function handle(){

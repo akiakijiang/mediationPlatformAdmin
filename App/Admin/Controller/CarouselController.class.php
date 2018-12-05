@@ -14,7 +14,7 @@ class CarouselController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：所属店铺轮播列表
      */
     public function lists(){
@@ -29,7 +29,7 @@ class CarouselController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：添加广告的页面
      */
     public function add(){
@@ -39,7 +39,7 @@ class CarouselController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：添加修改广告轮播主方法
      */
     public function handle(){
@@ -65,7 +65,7 @@ class CarouselController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：删除指定广告轮播
      */
     public function del(){
@@ -84,7 +84,7 @@ class CarouselController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：编辑指定广告轮播
      */
     public function edit(){

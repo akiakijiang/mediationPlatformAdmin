@@ -36,7 +36,7 @@ class BaobiaoController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：打款统计
      */
     public function money(){
@@ -69,7 +69,7 @@ class BaobiaoController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：计算销售量，销售额
      */
     public function xiaoshou(){

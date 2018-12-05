@@ -25,7 +25,7 @@ class DividedintoModel extends RelationModel {
     );
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：获取指定用户所有返现红包记录
      */
     public function get_all(){

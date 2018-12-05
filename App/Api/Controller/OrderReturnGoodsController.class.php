@@ -21,7 +21,7 @@ class OrderReturnGoodsController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：商品退货申请
      */
     public function index(){
@@ -47,7 +47,7 @@ class OrderReturnGoodsController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：商品退货提交物流单号
      */
     public function wuliu(){
@@ -70,7 +70,7 @@ class OrderReturnGoodsController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：提交退货申请
      */
     public function handle(){
@@ -109,7 +109,7 @@ class OrderReturnGoodsController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：提交退货物流信息
      */
     public function save(){

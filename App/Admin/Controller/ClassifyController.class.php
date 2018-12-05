@@ -14,7 +14,7 @@ class ClassifyController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：分类列表
      */
     public function lists(){
@@ -24,7 +24,7 @@ class ClassifyController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：添加编辑分类主方法
      */
     public function handle(){
@@ -50,7 +50,7 @@ class ClassifyController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：添加分类页面
      */
     public function add(){
@@ -60,7 +60,7 @@ class ClassifyController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：编辑分类页面
      */
     public function edit(){
@@ -76,7 +76,7 @@ class ClassifyController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：删除分类主方法
      */
     public function del(){

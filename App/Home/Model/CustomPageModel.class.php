@@ -20,7 +20,7 @@ class CustomPageModel extends RelationModel {
     );
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：获取自定义首页数据
      */
     public function get(){

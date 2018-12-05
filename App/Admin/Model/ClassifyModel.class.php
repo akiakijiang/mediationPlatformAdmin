@@ -24,7 +24,7 @@ class ClassifyModel extends RelationModel {
     );
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：判断是否超过3层
      */
     protected function checklevel(){
@@ -38,7 +38,7 @@ class ClassifyModel extends RelationModel {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：判断等级
      */
     protected function setlevel(){
@@ -58,7 +58,7 @@ class ClassifyModel extends RelationModel {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：设置缩略图
      */
     protected function setImg(){
@@ -78,7 +78,7 @@ class ClassifyModel extends RelationModel {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：获取所有分类
      */
     public function get_all($shopid){
@@ -102,7 +102,7 @@ class ClassifyModel extends RelationModel {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：获取首页显示的8个分类
      * @param $shopid  店铺ID
      */

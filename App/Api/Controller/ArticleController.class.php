@@ -10,7 +10,7 @@ class ArticleController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：积分规则页面
      */
     public function jifen(){
@@ -20,7 +20,7 @@ class ArticleController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：合作建议页面
      */
     public function hezuo(){

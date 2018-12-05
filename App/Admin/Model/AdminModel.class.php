@@ -33,7 +33,7 @@ class AdminModel extends RelationModel {
 
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：  判断登录用户是否存在
      * @param $map
      *

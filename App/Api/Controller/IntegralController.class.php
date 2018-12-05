@@ -17,7 +17,7 @@ class IntegralController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：我的积分
      */
     public function index(){

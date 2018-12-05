@@ -72,7 +72,7 @@ class WeixinController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：与微信服务器连通接口
      */
     public function index(){

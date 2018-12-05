@@ -16,7 +16,7 @@ class OrderController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：个人中心我的订单页面
      */
     public function index(){
@@ -43,7 +43,7 @@ class OrderController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：下单结算页面
      */
     public function jiesuan(){
@@ -63,7 +63,7 @@ class OrderController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：取消订单    只有在待付款下可以直接取消订单
      */
     public function cancle(){
@@ -86,7 +86,7 @@ class OrderController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：申请退款接口，状态为20可申请
      */
     public function refund(){
@@ -113,7 +113,7 @@ class OrderController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：用户确认收货操作,状态为30可操作。确认收货后将商品可获得积分返给用户
      */
     public function Goods_receipt(){
@@ -165,7 +165,7 @@ class OrderController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：订单评价界面
      */
     public function evaluate(){
@@ -200,7 +200,7 @@ class OrderController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：评价主方法
      */
     public function evaluate_handle(){
@@ -244,7 +244,7 @@ class OrderController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：查看物流页面
      */
     public function wuliu(){
@@ -301,7 +301,7 @@ class OrderController extends Controller {
 
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：商品详情页直接下单
      */
     public function set_order_from_detail(){
@@ -353,7 +353,7 @@ class OrderController extends Controller {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：从购物车下单
      */
     public function set_order_from_cart(){

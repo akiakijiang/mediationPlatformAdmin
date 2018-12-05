@@ -26,7 +26,7 @@
     * ./ThinkPHP/Library/Think/Cache/Driver/Hredis.class.php
         expire()方法
 
-* 商城服务器里，黄炜的微商城要加redis身份验证配置
+* 商城服务器里，qiuiqu的微商城要加redis身份验证配置
     * ./App/Common/Conf/config.php 添加配置信息
         'REDIS_AUTH'        => "baimifan!@#",
     * ./ThinkPHP/Library/Think/Cache/Driver/Hredis.class.php

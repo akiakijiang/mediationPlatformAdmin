@@ -23,7 +23,7 @@ class AdminGroupModel extends RelationModel {
     );
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：获取当前店铺下所有管理员角色
      */
     public function get_all(){

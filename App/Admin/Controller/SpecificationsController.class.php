@@ -14,7 +14,7 @@ class SpecificationsController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：规格列表
      */
     public function lists(){
@@ -29,7 +29,7 @@ class SpecificationsController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：新增规格
      */
     public function add(){
@@ -37,7 +37,7 @@ class SpecificationsController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：添加修改规格主方法
      */
     public function handle(){
@@ -63,7 +63,7 @@ class SpecificationsController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：删除某规格
      */
     public function del(){
@@ -76,7 +76,7 @@ class SpecificationsController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：编辑某规格
      */
     public function edit(){

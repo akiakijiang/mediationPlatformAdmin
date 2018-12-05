@@ -14,7 +14,7 @@ class DividedintoController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：分成列表
      */
     public function lists(){
@@ -47,7 +47,7 @@ class DividedintoController extends PublicController {
     }
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：待放款列表
      */
     public function lists2(){
@@ -77,7 +77,7 @@ class DividedintoController extends PublicController {
 
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：放款主方法
      */
     public function fangkuan(){

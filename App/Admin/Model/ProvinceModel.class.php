@@ -17,7 +17,7 @@ class ProvinceModel extends Model {
     );
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能： 获取所有省份列表
      * @return bool|mixed
      */

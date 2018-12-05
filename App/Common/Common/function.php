@@ -41,7 +41,7 @@
 
 
     /**
-     * 开发者：huangwei
+     * 开发者：akiaki
      * 方法功能：生产短链接
      * @param $surl
      *

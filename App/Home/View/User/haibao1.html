@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的专属推广海报</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="{:C('CDN_PATH')}__PUBLIC__/resource/css/hindex.css?{:C('CDN_VERSION')}">
+</head>
+<body class="grhb">
+    <div class="logo"></div>
+    <div class="user_img">
+        <img src="{$user.img}">
+    </div>
+    <div class="hbbox">
+        <p>我是<span>{$user.nickname}</span></p>
+        <p>我为<span>{$config['site_name']}</span>代言</p>
+    </div>
+    <div id="code">
+        <img src="{:C('SITE_PATH')}Home/user/code?url={$url}&id={$user.id}" width="190" height="190">
+    </div>
+    <p class="shibie">长按识别二维码</p>
+</body>
+</html>

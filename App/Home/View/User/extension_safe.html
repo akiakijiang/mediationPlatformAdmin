@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>我的推广</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/??sm.min.css,sm-extend.min.css">
+    <script src="http://cdn.bootcss.com/vue/1.0.26/vue.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/resource/hw/css/xiaoshou.css">
+</head>
+<body>
+<div class="page-group">
+    <div class="page">
+        <style>
+            p{margin: 0px;}
+            .page, .page-group{background: rgb(238,238,238)}
+            .jifen{margin: 10px 0px;background: #fff;min-height: 30px;padding: 10px 10px 20px 10px;}
+            .jifen p{margin: 0px;font-size: 14px;color: #141417;width: 100%;text-align: center}
+            .jifen b{text-align: center;color: #ff0043;display: block;font-size: 24px;height: 38px;}
+            .row .col-50:nth-child(1){border-right: 1px solid rgb(241,241,241)}
+            .row .col-50{text-align: center}
+            .tgren{margin-top: 10px;margin-bottom: 10px;}
+            .tgren ul li{list-style: none;font-size: 14px}
+            .tgren ul li .item-title{font-size: 14px}
+            .tgren ul li .item-after{color: #ff0043;font-size: 14px;}
+            .tgren ul li p{color: rgb(153,153,153)}
+            .tgren ul li p b{font-weight: normal;color: #ff0043;}
+            .allback{position: absolute; top: 0%; left: 0%; width: 100%; height: 100%; background-color: black; z-index:1001; -moz-opacity: 0.7; opacity:.70; filter: alpha(opacity=70);display: none;}
+            .code{width: 200px;height: 200px;background: #fff;position: fixed;top: 50%;margin-top: -100px;z-index: 99999;padding-top:5px;left: 50%;margin-left: -100px;text-align: center;display: none;}
+            .code img{width: 100%}
+            .code p{font-size: 14px;}
+            .isauto1,.isauto2,.isauto3{max-height: 175px;overflow: hidden}
+        </style>
+        <div class="content">
+            <div class="box1">店长：{$Think.session.user.nickname}</div>
+            <div class="box2">
+                <p class="p1">累计收益（元）</p>
+                <p class="p2">{$money|default='0'}元</p>
+            </div>
+            <div class="box3">
+                <div class="row">
+                    <div class="col-50" style="border-right: 1px solid #d7d7d7">
+                        <p><b>{$nub|default='0'}</b>笔</p>
+                        <p>推广订单</p>
+                    </div>
+                    <div class="col-50">
+                        <p><b>{$money|default='0'}</b>元</p>
+                        <p>累计收益金额</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box4" style="background: none">
+                <a href="/Home/goods/tglist">
+                    <button type="button" class="btn btn-success">开始推广</button>
+                </a>
+                <hr class="hrl">
+            </div>
+
+            <div class="list-block contacts-block tgren first"  v-bind:class="{ 'isauto1': isauto1}">
+                <div class="list-group">
+                    <ul>
+                        <li @click="clickshow(1)">
+                            <div class="item-content item-link">
+                                <div class="item-inner">
+                                    <div class="item-title">一级推广人（{{ first.length }}人）</div>
+                                    <div class="item-after"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <template v-for="item in first">
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <p>{{ item.from.nickname }}</p>
+                                    <p><b>￥{{ item.money }}</b></p>
+                                </div>
+                            </div>
+                        </li>
+                        </template>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="list-block contacts-block tgren first"  v-bind:class="{ 'isauto2': isauto2}">
+                <div class="list-group">
+                    <ul>
+                        <li @click="clickshow(2)">
+                            <div class="item-content item-link">
+                                <div class="item-inner">
+                                    <div class="item-title">二级推广人（{{ second.length }}人）</div>
+                                    <div class="item-after"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <template v-for="item in second">
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <p>{{ item.from.nickname }}</p>
+                                        <p><b>￥{{ item.money }}</b></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="list-block contacts-block tgren first"  v-bind:class="{ 'isauto3': isauto3}">
+                <div class="list-group">
+                    <ul>
+                        <li @click="clickshow(3)">
+                            <div class="item-content item-link">
+                                <div class="item-inner">
+                                    <div class="item-title">三级推广人（{{ three.length }}人）</div>
+                                    <div class="item-after"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <template v-for="item in three">
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <p>{{ item.from.nickname }}</p>
+                                        <p><b>￥{{ item.money }}</b></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="allback" @click="codehide"></div>
+        <div class="code">
+            <div id="datu"></div>
+        </div>
+    </div>
+</div>
+
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type="text/javascript" src="__PUBLIC__/resource/assets/js/zepto.qrcode.min.js"></script>
+<script type='text/javascript' src='__PUBLIC__/resource/hw/js/config.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/??sm.min.js,sm-extend.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='__PUBLIC__/resource/hw/js/demos.js' charset='utf-8'></script>
+<script>
+    $("#datu").qrcode({
+        render: "canvas", //table方式
+        width: 190, //宽度
+        height:190, //高度
+        text: "{$url}" //任意内容
+    });
+    var vm = new Vue({
+        el: 'body',
+        data: {
+            first:{$first|json_encode},
+            second:{$second|json_encode},
+            three:{$three|json_encode},
+            isauto1:true,
+            isauto2:true,
+            isauto3:true,
+        },
+        methods: {
+            code: function (event) {
+                $(".allback,.code").show();
+            },
+            codehide:function () {
+                $(".allback,.code").hide();
+            },
+            clickshow:function (id) {
+                if(id == "1"){
+                    if(vm.isauto1){
+                        vm.isauto1 = false
+                    }else{
+                        vm.isauto1 = true
+                    }
+                }else if(id == "2"){
+                    if(vm.isauto2){
+                        vm.isauto2 = false
+                    }else{
+                        vm.isauto2 = true
+                    }
+                }else if(id == "3"){
+                    if(vm.isauto3){
+                        vm.isauto3 = false
+                    }else{
+                        vm.isauto3 = true
+                    }
+                }
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

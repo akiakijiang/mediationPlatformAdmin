@@ -1,0 +1,22 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="http://cdn.bootcss.com/jquery/1.12.1/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/resource/assets/js/jquery.qrcode.min.js"></script>
+</head>
+<body>
+<div id="gcode">
+
+</div>
+<script>
+    $("#gcode").qrcode({
+        render: "canvas", //table方式
+        width: 190, //宽度
+        height:190, //高度
+        text: "http://shop.sunday.so/Home/goods/detail/?id={:$_GET['id']}" //任意内容
+    });
+</script>
+</body>
+</html>

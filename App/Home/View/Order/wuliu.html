@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>物流追踪</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="{:C('CDN_PATH')}__PUBLIC__/resource/dist/vux.css?{:C('CDN_VERSION')}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/??sm.min.css,sm-extend.min.css">
+    <script src="http://cdn.bootcss.com/vue/1.0.26/vue.min.js"></script>
+    <style>
+        .page, .page-group{background: rgb(238,238,238)}
+        .wuliu{padding: 10px;margin: 10px 0px;background: #fff;}
+        .wuliu img{width: 76px;height: 76px;float: left}
+        .wuliu p{margin: 0px;margin-left: 90px;font-size: 12px;color: rgb(153,153,153);margin-bottom: 5px;}
+        p.status{font-size: 14px;color: rgb(20,20,23)}
+        .clear{clear: both}
+        .vux-timeline{padding: .5rem;background: #fff}
+        .vux-timeline ul{padding: 0px;margin: 0px;margin-left: 5px;}
+        h4,p{margin: 0px;font-size: 14px;font-weight: normal;color: rgb(153,153,153)}
+        h4.recent,p.recent{color: rgb(96,205,137);margin-bottom: 5px}
+        .htitle{border-bottom: 1px solid rgb(241,241,241);margin-bottom: 10px;font-size: 14px;padding-bottom: 10px;}
+        .vux-timeline>ul>li{margin-left: 5px;}
+    </style>
+</head>
+<body>
+<div class="page-group">
+    <div class="page">
+        <div class="content">
+            <div class="wuliu">
+                <img src="{$data.snop.0.snopjson.thumbnail}">
+                <p class="status">物流状态</p>
+                <p>运单号：{$wulid}</p>
+                <p>信息来源：{$data.extend.express}</p>
+                <div class="clear"></div>
+            </div>
+
+            <div id="demo">
+                <div class="timeline-demo" v-if="error == 0">
+                    <timeline :color="color">
+                        <timeline-item v-for="(mykey,item) in data">
+                            <h4 class="recent" v-if="mykey == 0">{{ item.context}}</h4>
+                            <h4 v-else>{{ item.context}}</h4>
+                            <p class="recent" v-if="mykey == 0">{{ item.ftime}}</p>
+                            <p v-else>{{ item.ftime}}</p>
+                        </timeline-item>
+                    </timeline>
+                </div>
+                <div v-else>
+                    {{ error }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{:C('CDN_PATH')}__PUBLIC__/resource/dist/components/timeline/index.js?{:C('CDN_VERSION')}"></script>
+<script src="{:C('CDN_PATH')}__PUBLIC__/resource/dist/components/timeline-item/index.js?{:C('CDN_VERSION')}"></script>
+<script>
+    // register components
+    Vue.component('timeline', vuxTimeline)
+    Vue.component('timeline-item', vuxTimelineItem)
+    new Vue({
+        el: '#demo',
+        data :{
+            data : {$kuaidi},
+            error :"{$error|default="0"}",
+        }
+    })
+</script>
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='__PUBLIC__/resource/hw/js/config.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/??sm.min.js,sm-extend.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='__PUBLIC__/resource/hw/js/demos.js' charset='utf-8'></script>
+</body>
+</html>

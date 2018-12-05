@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{$config['site_name']}</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/??sm.min.css,sm-extend.min.css">
+    <link rel="stylesheet" href="{:C('CDN_PATH')}__PUBLIC__/resource/font/iconfont.css?{:C('CDN_VERSION')}">
+    <link rel="stylesheet" href="{:C('CDN_PATH')}__PUBLIC__/resource/css/hindex.css?{:C('CDN_VERSION')}">
+    <script src="http://cdn.bootcss.com/vue/1.0.26/vue.min.js"></script>
+    <script src="{:C('CDN_PATH')}__PUBLIC__/resource/hw/js/vue.lazyimg.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        .youhui{margin-top: 10px;}
+        .youhui ul{padding: 0px;margin: 0px;}
+        .youhui ul li{float: left;width: 49%;height: 70px;list-style: none;margin-bottom: 10px;padding: 3px;background: #fff}
+        .youhui ul li:nth-child(even){float: right}
+        .youhui ul li img{width: 100%;height: 65px;vertical-align: middle;}
+        .yhbox{width: 250px;height: 150px;background: #fff;position: fixed;top: 50%;margin-top: -170px;z-index: 9999;left: 50%;margin-left: -125px;border-radius: 5px;padding: 5px;display: none}
+        .yhbox p{text-align: center;margin-bottom: 0px;font-size: 14px}
+        .yhbox input{text-align: center;margin-bottom: 0px;font-size: 18px;width:200px;margin-top: 10px;margin-left: 13px}
+        .yhbtn{width: 220px;height: 33px;line-height: 33px;text-align: center;background: red;color: #fff;margin: 0px auto;border-radius: 5px;margin-top: 35px}
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        wx.config({$jssdk});
+
+        wx.ready(function () {
+            <if condition="$url == '' ">
+            wx.hideOptionMenu();
+            </if>
+            wx.onMenuShareAppMessage({
+                title: "{$config['site_name']}",
+                desc: "{$config['site_name']}111",
+                link: "{$url}",
+                imgUrl: "http://shopceshi.hw.sunday.so{$config['site_logo']}",
+            });
+            wx.onMenuShareTimeline({
+                title: "{$config['site_name']}", // 分享标题
+                link: "{$url}", // 分享链接
+                imgUrl: "{:C('SITE_PATH')}{$config['site_logo']}", // 分享图标
+            });
+
+        });
+
+    </script>
+    <script type="text/javascript">
+        Vue.use(Vue.lazyimg,{
+            fadein: false,
+            nohori: false,
+            speed: 0
+        })
+    </script>
+    <style>
+        .tel{width: 44px; height:44px;display: block;background: url("{:C('CDN_PATH')}__PUBLIC__/resource/images/icon_kefu.png");background-size: cover;position: absolute;right: 3px; bottom: 100px;z-index: 4}
+    </style>
+</head>
+<body>
+<div class="page-group">
+    <div class="page">
+        <div class="qianbao" @click="qianbao"></div>
+        <a href="tel:{$tel.value}" class="external">
+        <div class="tel"></div>
+        </a>
+        <!----关注我们弹出框---->
+        <div class="gzbox">
+            <p>长按识别图中二维码关注我们</p>
+            <img data-src="{:C('CDN_PATH')}__PUBLIC__/resource/images/tm.jpg?{:C('CDN_VERSION')}">
+            <div class="gzbtn" @click="closegzbox">关闭</div>
+        </div>
+        <div class="allbg" @click="closegzbox"></div>
+        <!----关注我们弹出框---->
+
+        <div class="tjbox">
+            <div class="ttop">
+                <img src="{:C('CDN_PATH')}__PUBLIC__/resource/images/lijituiguang@2x.png?{:C('CDN_VERSION')}" width="100">
+            </div>
+            <div class="ttcenter">
+                <p>方法一：微信内直接分享</p>
+                <p class="p1">点击右上角        进行分享</p>
+                <p>方法二：复制一下链接进行转发推广</p>
+                <p class="p1 p2">{$url|get_duan_url}</p>
+                <p>方法三：专属二维码海报推广</p>
+                <p class="p1">点击生成海报，分享给好友</p>
+                <div id="datu" @click="showcode"></div>
+                <div class="allbg2" @click="closed2"></div>
+            </div>
+            <div class="tfooter">
+                <a href="/Home/goods/tglist"> <button type="button" class="btn btn-success">推广员中心</button></a>
+                <button type="button" class="btn btn-default" @click="closegzbox">关闭</button>
+            </div>
+        </div>
+
+
+        <nav class="bar bar-tab">
+            <a class="tab-item active" href="/">
+                <span class="iconfont icon-shouye"></span>
+                <span class="tab-label">首页</span>
+            </a>
+            <a class="tab-item" href="/Home/goods/xinpin">
+                <span class="iconfont icon-biaoqian1"></span>
+                <span class="tab-label">全部商品</span>
+            </a>
+            <a class="tab-item" href="{:U('cart/index')}">
+                <span class="iconfont icon-gouwudaib"></span>
+                <span class="tab-label">购物车</span>
+            </a>
+            <a class="tab-item" href="{:U('center/index')}">
+                <span class="iconfont icon-jikediancanicon03"></span>
+                <span class="tab-label">个人中心</span>
+            </a>
+        </nav>
+        <div class="content infinite-scroll infinite-scroll-bottom">
+            <form action="/Home/goods/lists" method="get">
+                <div class="bar bar-header-secondary" @click="tiao">
+                    <div class="searchbar" style="position: absolute;padding-right: 60px;width: 100%">
+                        <a class="searchbar-cancel" style="font-size: 14px">取消</a>
+                        <div class="search-input">
+                            <label class="icon icon-search" for="search"></label>
+                            <input type="search" id='search' placeholder='搜索您需要的商品' name="keyword"/>
+                        </div>
+                    </div>
+                    <div class="flword">分类</div>
+                </div>
+            </form>
+            <div class="swiper-container" data-space-between='10' data-autoplay="3000" id="lb1">
+                <div class="swiper-wrapper">
+                    <volist name="carousel" id="vo">
+                        <if condition="$vo.position eq 1 ">
+                        <div class="swiper-slide">
+                            <a href="{$vo.url}">
+                            <img src="{$vo.carouselimg}" alt="{$vo.title}">
+                            </a>
+                        </div>
+                        </if>
+                    </volist>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="content-padded grid-demo fenlei">
+                <div class="row">
+                    <template v-for="(mykey,item) in classify">
+                    <div class="col-25" @click="url2(item.classifyid)">
+                        <img :src="item.ico" style="border-radius: 50%">
+                        <p>{{ item.name }}</p>
+                    </div>
+                    </template>
+                    <div class="col-25" @click="url1">
+                        <img src="{:C('CDN_PATH')}__PUBLIC__/resource/images/quanbu.png?{:C('CDN_VERSION')}" style="border-radius: 50%">
+                        <p>查看全部</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="youhui">
+                <ul>
+
+                    <foreach name="coupon" item="vo" >
+                        <li><img src="{$vo.coupon_path}"  @click="youhui({$vo.id})"></li>
+                        <!--<input type="hidden" id="couponid" value="{$vo.id}">-->
+                    </foreach>
+                </ul>
+                <div style="clear: both;"></div>
+            </div>
+
+            <div class="yhbox">
+                <p>请确认领取此兑换码</p>
+                <!--<input type="text" :value="items.id" readonly="readonly">-->
+                <div class="yhbtn" @click="closeyhbox()">确认</div>
+            </div>
+
+            <div class="notice">
+                <img src="{:C('CDN_PATH')}__PUBLIC__/resource/images/notice.png?{:C('CDN_VERSION')}" width="40">
+                <div class="ncontent">
+                    <div class="d1" id="div1">
+                        <span class="div2" id="div2">
+                            {$config['notice']}
+                        </span>
+                        <span id="div3" class="div2"></span>
+                        <span id="div4" class="div2"></span>
+                    </div>
+                </div>
+                <script language="javascript" type="text/javascript">
+                    var s,s2,s3,timer;
+                    function init(){
+                        s=getid("div1");
+                        s2=getid("div2");
+                        s3=getid("div3");
+                        s4=getid("div4");
+                        s3.innerHTML=s2.innerHTML;
+                        s4.innerHTML=s2.innerHTML;
+                        timer=setInterval(mar,30)
+                    }
+                    function mar(){
+                        if(s2.offsetWidth<=s.scrollLeft){
+                            s.scrollLeft-=s2.offsetWidth;
+                        }else{s.scrollLeft++;}
+                    }
+                    function getid(id){
+                        return document.getElementById(id);
+                    }
+                    window.onload=init;
+                </script>
+                <img src="{:C('CDN_PATH')}__PUBLIC__/resource/images/btn_gaunzhu.png?{:C('CDN_VERSION')}" width="80" style="position: absolute;right: 10px;top: 5px;margin-top: 0px;" @click="guanzhu">
+            </div>
+
+            <div style="margin-top: 0px" class="imgbox">
+                <volist name="carousel" id="vo">
+                    <if condition="$vo.position eq 2 ">
+                        <a href="{$vo.url}">
+                            <img src="{$vo.carouselimg}" alt="{$vo.title}" style="max-width: 100%">
+                        </a>
+                    </if>
+                </volist>
+            </div>
+
+            <div class="allbox">
+                <ul>
+                    <template v-for="(mykey,item) in index[0]">
+                        <li>
+                            <a href="/Home/goods/detail/?id={{item.commodityid}}">
+                                <img src="__PUBLIC__/resource/hw/images/grey.gif" v-lazyload:opt.fadein="item.thumbnail">
+                                <p>{{ item.title }}</p>
+                                <p><b>￥{{ item.current }}</b><s>￥{{ item.original }}</s></p>
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+                <div style="clear: both;"></div>
+            </div>
+
+            <div style="margin-top: 0px" class="imgbox">
+                <volist name="carousel" id="vo">
+                    <if condition="$vo.position eq 3 ">
+                        <a href="{$vo.url}">
+                            <img src="{$vo.carouselimg}" alt="{$vo.title}" style="max-width: 100%">
+                        </a>
+                    </if>
+                </volist>
+            </div>
+
+            <div class="allbox">
+                <ul>
+                    <template v-for="(mykey,item) in index[1]">
+                        <li>
+                            <a href="/Home/goods/detail/?id={{item.commodityid}}">
+                                <img src="__PUBLIC__/resource/hw/images/grey.gif" v-lazyload:opt.fadein="item.thumbnail">
+                                <p>{{ item.title }}</p>
+                                <p><b>￥{{ item.current }}</b><s>￥{{ item.original }}</s></p>
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+                <div style="clear: both;"></div>
+            </div>
+
+            <div style="margin-top: 0px" class="imgbox">
+                <volist name="carousel" id="vo">
+                    <if condition="$vo.position eq 4 ">
+                        <a href="{$vo.url}">
+                            <img src="{$vo.carouselimg}" alt="{$vo.title}" style="max-width: 100%">
+                        </a>
+                    </if>
+                </volist>
+            </div>
+
+            <div class="allbox">
+                <ul>
+                    <template v-for="(mykey,item) in index[2]">
+                        <li>
+                            <a href="/Home/goods/detail/?id={{item.commodityid}}">
+                                <img src="__PUBLIC__/resource/hw/images/grey.gif" v-lazyload:opt.fadein="item.thumbnail">
+                                <p>{{ item.title }}</p>
+                                <p><b>￥{{ item.current }}</b><s>￥{{ item.original }}</s></p>
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type="text/javascript" src="{:C('CDN_PATH')}/Public/resource/hw/js/jquery.qrcode.min.js?{:C('CDN_VERSION')}"></script>
+<script type='text/javascript' src='{:C('CDN_PATH')}__PUBLIC__/resource/hw/js/config.js?{:C('CDN_VERSION')}' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/??sm.min.js,sm-extend.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='{:C('CDN_PATH')}__PUBLIC__/resource/hw/js/demos.js?{:C('CDN_VERSION')}' charset='utf-8'></script>
+<script>
+    $("#datu").qrcode({
+        render: "canvas", //table方式
+        width: 50, //宽度
+        height:50, //高度
+        text: "{$url}" //任意内容
+    });
+
+    var vm = new Vue({
+        el: 'body',
+        data: {
+            data : {$data|json_encode},
+            classify : {$classify|json_encode},
+            index : {$index|json_encode},
+            url : "{$url}",
+        },
+        methods: {
+            tiao:function () {
+                window.location.href = '/Home/goods/search'
+            },
+            url2: function (id) {
+                window.location.href = '/Home/goods/lists/?id='+id
+            },
+            url1: function (id) {
+                window.location.href = '/Home/goods/search/'
+            },
+            youhui:function(id){
+//                vm.items = items;
+////                console.log(isget)
+                $.post('/Home/index/is_get',{id:id},function(isget){
+                    if(isget == 200){
+                        $.toast("你已经领取过了!");
+                        return;
+                    }else if(isget == 100){
+                        $(".yhbox").show();
+
+                        $('.yhbox').append("<input type='hidden' id='couponid' value="+id+">");
+                    }
+//                    alert(isget)
+                })
+            },
+            closeyhbox:function(){
+                var couponid = $('#couponid').val();
+                $(".yhbox").hide();
+                window.location.href = '/Home/coupon/conversion?couponid='+couponid
+            },
+            guanzhu:function(){
+                $(".gzbox img").attr("src",$(".gzbox img").attr('data-src'))
+                $(".allbg,.gzbox").show();
+            },
+            closegzbox:function(){
+                $(".allbg,.gzbox,.tjbox").hide();
+            },
+            qianbao:function(){
+                if(vm.url == ""){
+                    window.location.href = '/Home/user/apply'
+                }else{
+//                    window.location.href = "/Home/user/extension"
+                    $(".tjbox,.allbg").show();
+                }
+            },
+            kefu:function(){
+                if(vm.url == ""){
+                    window.location.href = '/Home/user/apply'
+                }else{
+                    window.location.href = "/Home/user/haibao?id={$Think.session.user.id}"
+//                    $(".tjbox,.allbg").show();
+                }
+            },
+            showcode:function(){
+                window.location.href = "/Home/user/haibao?id={$Think.session.user.id}"
+            },
+        }
+    })
+</script>
+</body>
+</html>

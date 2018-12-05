@@ -1,0 +1,263 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="__PUBLIC__/resource/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/resource/assets/css/admin.css">
+    <script src="//cdn.bootcss.com/vue/1.0.24/vue.min.js"></script>
+    <style>
+        .am-btn-default{background: none}
+        .am-dropdown-content{z-index: 9999;background: #fff}
+        .am-nav-tabs>li>a{font-size: 14px}
+        .am-table span{font-size: 14px;font-weight: normal;margin-right: 50px;}
+        .am-table span em{font-style: normal}
+        .am-table{font-size: 13px}
+        .w70{width: 500px}
+        .bdl{text-align: center;width: 230px;}
+        .am-table-bordered>thead+tbody>tr:first-child>td, .am-table-bordered>thead+tbody>tr:first-child>th{border-top: none}
+        address, blockquote, dl, fieldset, figure, hr, ol, p, pre, ul{margin: 0px;}
+        .ncm-goods-thumb img{float: left;margin-right: 15px}
+        .am-table{margin-bottom: 20px}
+        .am-table button{display: block;margin-bottom: 10px;}
+        .am-table thead{background: #FAFAFA}
+        .mr0{margin-right: 0px !important;}
+        .am-btn-default{background: none}
+        .am-dropdown-content{z-index: 9999;background: #fff}
+        label{font-weight: normal;margin-right: 10px;}
+        .am-form-group{margin-bottom: 0px;display: inline-block;margin-right: 10px;}
+        .am-panel{margin-right: 30px;margin-left: 15px;border: none;-webkit-box-shadow: none;box-shadow: none}
+        .am-panel-bd{padding: .5rem;}
+        .am-form select{width: 100px;display: inline-block;margin-right: 10px;}
+        .am-form input[type='text']{width: 200px;display: inline-block}
+        .am-form input[type=number], .am-form input[type=search], .am-form input[type=text], .am-form input[type=password], .am-form input[type=datetime], .am-form input[type=datetime-local], .am-form input[type=date], .am-form input[type=month], .am-form input[type=time], .am-form input[type=week], .am-form input[type=email], .am-form input[type=url], .am-form input[type=tel], .am-form input[type=color], .am-form select, .am-form textarea, .am-form-field{padding: .4rem;border-radius: 0px;}
+        .laydate-icon, .laydate-icon-default, .laydate-icon-danlan, .laydate-icon-dahong, .laydate-icon-molv{height: 32px !important;padding-left: 10px!important;}
+    </style>
+</head>
+<body>
+<div class="am-cf admin-main2">
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+            <if condition="$_GET['type'] neq 2 ">
+            <div class="am-cf am-padding am-padding-bottom-0 am-animation-slide-top hw-nav" >
+                <div class="am-fl am-cf">
+                    <ol class="am-breadcrumb">
+                        <li class="am-active">订单列表</li>
+                    </ol>
+                </div>
+                <div class="am-fr am-cr">
+                    <a class="am-btn am-btn-warning hw-shuaxin" href="javascript:location.replace(location.href);">
+                        <i class="am-icon-refresh"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="am-panel am-panel-default">
+                <form class="am-form" action="__ACTION__" method="get" id="from1">
+                    <div class="am-panel-bd">
+                        <div class="am-form-group">
+                            <label for="doc-select-1">状态：</label>
+                            <select id="doc-select-1" name="status">
+                                <option value="0" <eq name="Think.get.status" value="0">selected</eq>>全部</option>
+                                <option value="10" <eq name="Think.get.status" value="10">selected</eq>>待付款</option>
+                                <option value="20" <eq name="Think.get.status" value="20">selected</eq>>待发货</option>
+                                <option value="30" <eq name="Think.get.status" value="30">selected</eq>>待收货</option>
+                                <option value="50" <eq name="Think.get.status" value="50">selected</eq>>已完成</option>
+                            </select>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="doc-select-2">订单编号：</label>
+                            <input type="text" name="uniqueid" id="doc-select-2" value="{:$_GET['uniqueid']}">
+                        </div>
+                        <label for="doc-select-1">开始日期：</label>
+                        <div class="am-form-group am-form-icon">
+                            <input id="start" class="laydate-icon" value="{$time.0}" readonly name="start">
+                        </div>
+                        <label for="doc-select-1"> 结束日期：</label>
+                        <div class="am-form-group am-form-icon">
+                            <input id="end" class="laydate-icon" value="{$time.1}" readonly name="end">
+                        </div>
+                        <a class="am-btn am-btn-sm am-btn-primary" @click="shaixuan">
+                            <i class="am-icon-search"></i>
+                            筛选
+                        </a>
+                        <a class="am-btn am-btn-sm am-btn-secondary" @click="daochu">
+                            <i class="am-icon-cloud-download"></i>
+                            导出订单
+                        </a>
+                    </div>
+                </form>
+            </div>
+            </if>
+            <div class="am-g am-animation-slide-right">
+                <div class="am-u-sm-12">
+                    <form class="am-form">
+                        <table class="am-table am-table-bordered" v-for="(i,item) in order">
+                            <thead>
+                            <tr>
+                                <th colspan="20">
+                                    <span class="ml10">订单编号：<em>{{ item.uniqueid }}</em></span>
+                                    <span>下单时间：<em class="goods-time">{{  item.create_time }}</em></span>
+                                    <span class="am-badge am-badge-warning" v-if="item.snop[0]['snopjson']['type'] == 2">积分商品</span>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(mykey,snop) in item.snop">
+                                <td class="w70">
+                                    <div class="ncm-goods-thumb">
+                                        <img :src="snop.snopjson.thumbnail" width="60" height="60">
+                                        {{ snop.snopjson.title }}
+                                    </div>
+                                </td>
+                                <td width="200">{{ snop.money }}</td>
+                                <td width="50">x{{ snop.nums }}</td>
+                                <td class="bdl" rowspan="{{ item.snop.length }}" v-if="item.snop.length>0 && mykey==0">
+                                    <p @click="gouser(item.user.id)"> <img :src="item.user.img" width="50" style="border-radius: 50%"><br>{{ item.user.nickname }} </p>
+                                </td>
+                                <td class="bdl" rowspan="{{ item.snop.length }}" v-if="item.snop.length>0 && mykey==0">
+                                    <p class=""><strong style="color:red">{{ item.money }}</strong></p>
+                                    <p class="goods-freight" v-if="item.carriage == 0">（免运费）</p>
+                                    <p class="goods-freight" v-else>（运费：{{ item.carriage }}）</p>
+                                    <p title="支付方式：在线付款">微信支付</p>
+                                </td>
+                                <td class="bdl" rowspan="{{ item.snop.length }}" v-if="item.snop.length>0 && mykey==0">
+                                    <p>
+                                        <span class="am-badge am-badge-secondary am-radius mr0" v-if="item.order_state == 0">已关闭</span>
+                                        <span class="am-badge am-badge-secondary am-radius mr0" v-if="item.order_state == 10">待付款</span>
+                                        <span class="am-badge am-badge-secondary am-radius mr0" v-if="item.order_state == 20">待发货</span>
+                                        <span class="am-badge am-badge-secondary am-radius mr0" v-if="item.order_state == 30">待收货</span>
+                                        <span class="am-badge am-badge-secondary am-radius mr0" v-if="item.order_state == 40">待评价</span>
+                                        <span class="am-badge am-badge-secondary am-radius mr0" v-if="item.order_state == 50">已完成</span>
+                                        <span class="am-badge am-badge-secondary am-radius mr0" v-if="item.order_state == 60">退款中</span>
+                                        <span class="am-badge am-badge-secondary am-radius mr0" v-if="item.order_state == 70">退款完成</span>
+                                    </p>
+                                    <p><a @click="detail(item.orderid)" style="cursor: pointer">订单详情</a></p>
+                                </td>
+                                <td class="bdl" rowspan="{{ item.snop.length }}" style="width: 120px" v-if="item.snop.length>0 && mykey==0">
+                                    <template v-if="item.order_state == 10">
+                                        <button type="button" class="am-btn am-btn-danger am-btn-sm" @click="cancle_order(item.orderid,this,i)">取消订单</button>
+                                        <button type="button" class="am-btn am-btn-success am-btn-sm" @click="change_price(item.orderid,this,i)">修改价格</button>
+                                    </template>
+                                    <template v-if="item.order_state == 20">
+                                        <a class="am-btn am-btn-success am-btn-sm" @click="fahuo(item.orderid,this,i)">
+                                            <i class="am-icon-truck"></i>
+                                            设置发货
+                                        </a>
+                                    </template>
+
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="am-cf" style="padding:0px 30px 30px 30px;margin-bottom: 30px;">
+                            <div class="am-fl hw-jilu">共 {{ order.length }} 条记录</div>
+                            <div class="am-fr">
+                                {$page}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- content end -->
+</div>
+
+<!--[if lt IE 9]>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__PUBLIC__/resource/assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="//cdn.bootcss.com/jquery/2.0.2/jquery.min.js"></script>
+<script src="__PUBLIC__/resource/layer/layer.js"></script>
+<script src="__PUBLIC__/resource/layer/laydate.js"></script>
+<script src="__PUBLIC__/resource/assets/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/resource/assets/js/hw-layer.js"></script>
+<script src="__PUBLIC__/resource/assets/js/app.js"></script>
+<script>
+    var start = {
+        elem: '#start',
+        format: 'YYYY-MM-DD hh:mm:ss',
+        max: '2099-06-16 23:59:59', //最大日期
+        istime: true,
+        istoday: true,
+        choose: function(datas){
+            end.min = datas;
+        }
+    };
+    var end = {
+        elem: '#end',
+        format: 'YYYY-MM-DD hh:mm:ss',
+        max: '2099-06-16 23:59:59',
+        istime: true,
+        istoday: false,
+        choose: function(datas){
+            start.max = datas; //结束日选好后，重置开始日的最大日期
+        }
+    };
+    laydate(start);
+    laydate(end);
+</script>
+<script>
+    var vm = new Vue({
+        el: 'body',
+        data: {
+            order:{$data},
+            nub:2,
+        },
+        methods: {
+            detail: function (id) {
+                layer_full("查看订单详情",'__CONTROLLER__/detail/?id='+id)
+            },
+            daochu:function () {
+                window.location.href = "__CONTROLLER__/export"
+            },
+            shaixuan:function(){
+                $("#from1").submit();
+            },
+            cancle_order:function (id,event,aid) {
+                layer.confirm('确定要取消该订单吗？', {
+                    btn: ['确定','取消'] //按钮
+                }, function(){
+                    $.get('__CONTROLLER__/cancelorder',{id:id},function (data) {
+                        $temp = $.parseJSON(data);
+                        if($temp['status'] == "200"){
+                            vm.order[aid].order_state = 0
+                            layer.msg($temp['text']);
+                        }else{
+                            layer.msg($temp['text']);
+                        }
+                    })
+                }, function(){
+                });
+            },
+            gouser:function (id) {
+                layer_full("搜索用户","/Admin/user/lists?type=2&keyword="+id+"&hw=2")
+            },
+            change_price:function (id,event,aid) {
+                layer.prompt({
+                    title: '输入新的订单价格',
+                    formType: 0 //prompt风格，支持0-2
+                }, function(pass){
+                    $.get('__CONTROLLER__/changeorder',{id:id,money:pass},function (data) {
+                        console.log(aid)
+                        $temp = $.parseJSON(data);
+                        if($temp['status'] == "200"){
+                            vm.order[aid].money = pass
+                            layer.msg('修改成功！');
+                        }else{
+                            layer.msg($temp['text']);
+                        }
+                    })
+                });
+            },
+            fahuo:function (id) {
+                layer_show('订单发货','__CONTROLLER__/fahuo/?id='+id,500,390)
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta charset="UTF-8">
+    <title>与客服聊天</title>
+    <link rel="stylesheet" href="__PUBLIC__/resource/layui/css/layui.mobile.css">
+    <link id="layuicss-skinlayim-mobilecss" rel="stylesheet" href="__PUBLIC__/resource/layui/css/modules/layim/mobile/layim.css">
+</head>
+<body>
+<div id="J_demo" style="width:300px;height:300px;"></div>
+</body>
+<script src="__PUBLIC__/resource/layui/layui.js"></script>
+<script>
+    layui.use('mobile', function(){
+        var mobile = layui.mobile
+            ,layim = mobile.layim
+            ,layer = mobile.layer;
+
+        layim.config({
+           init: {
+                mine: {
+                    "username": "{$data.nickname}" //我的昵称
+                    ,"id": {$data.id} //我的ID
+                ,"avatar": "{$data.img}" //我的头像
+            }
+        }
+    });
+        var socket = new WebSocket("ws://42.96.176.66:7277");
+        socket.onopen = function () {
+            //登录
+            var login_data = JSON.stringify({
+                    type: 'login',
+                    id : {$data.id},
+                username: "{$data.nickname}",
+                avatar: "{$data.img}"
+        });
+            socket.send(login_data);
+            console.log("websocket握手成功!");
+        };
+
+        //创建一个会话
+        layim.chat({
+            id: 999
+            ,name: "小二"
+            ,type: 'friend' //friend、group等字符，如果是group，则创建的是群聊
+            ,avatar: "http://hcfl.sunday.so/Public/resource/images/timg.jpg"
+        });
+
+        //监听收到消息
+        socket.onmessage=function (res) {
+            //console.log(res.data);
+            var data = eval("("+res.data+")");
+            switch (data['message_type']){
+                //服务端ping客户端
+                case 'ping':
+                    socket.send('{"type":"ping"}');
+                    break;
+                //登陆更新用户列表
+                case  'login':
+                    console.log(data['username']+"登录成功");
+                    //layim.getMessage(res.data);//res.data即你发送消息传递的数据
+                    break;
+                case 'chatMessage':
+                    //console.log(data.data);
+                    layim.getMessage(data.data);
+                    break;
+                //离线消息推送
+                case 'logMessage':
+                    setTimeout(function () {layim.getMessage(data.data)}, 1000);
+                    break;
+                //用户退出 更新列表
+                case 'logout':
+                    break;
+                //聊天还有不在线
+                case 'ctUserOutline':
+                    console.log('11111');
+                    //layer.msg('好友不在线',{'time' : 1000});
+                    break;
+            }
+        };
+
+        layim.on('sendMessage',function (res) {
+            var mine = JSON.stringify(res.mine);
+            var to = JSON.stringify(res.to);
+            var login_data = '{"type":"chatMessage","data":{"mine":'+mine+', "to":'+to+'}}';
+            console.log(login_data);
+            socket.send(login_data);
+        });
+    });
+</script>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>订单评价页面</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/??sm.min.css,sm-extend.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/resource/dist/vux.css">
+    <script src="http://cdn.bootcss.com/vue/1.0.26/vue.min.js"></script>
+    <style>
+        .page, .page-group{background: rgb(238,238,238)}
+        .hw-list{margin: 0px;padding: 0px;}
+        .hw-list ul{list-style: none;margin: 0px;padding: 0px;}
+        .hw-list ul li{list-style: none;width: 100%;background: #fff;padding:5pt 11.5pt;margin-bottom: 5px; }
+        .content-block{margin: 0px;padding: 0px;margin-top: 5px;}
+        .clear{clear: both}
+        .hlistbody{padding: 5px 0px;margin-top: 5px;padding-top:10px;}
+        .hlistbody img{width: 76px;height: 76px;float: left}
+        .hfooter{margin-top: 10px;padding-bottom: 5px;}
+        .col-68{width: 68%}
+        .col-32{width: 32%}
+        .hlistbody .col-68 h3{font-size: 14px;color:rgb(20,20,23);margin: 0px;padding: 0px;font-weight: normal }
+        .hlistbody .col-68 span{font-size: 12px;color: rgb(153,153,153)}
+        .hlistbody .col-32 b{font-size: 18px;padding: 0px;margin: 0px;font-family: "PingFangSC-Regular";width: 100%;display: block;color: rgb(255,0,67);float: right}
+        .hlistbody .col-32{text-align: right}
+        .hlistbody .col-32 span{font-size: 14px;float: right;display: block;width: 100%}
+        .queding{height: 49px;position: absolute;bottom: 0px;left: 0px;width: 100%;line-height: 49px;text-align: center;background: #ff0043;color: #fff}
+        textarea{width: 100%}
+    </style>
+    <script src="__PUBLIC__/resource/dist/components/group/index.js"></script>
+    <script src="__PUBLIC__/resource/dist/components/x-textarea/index.js"></script>
+</head>
+<body>
+<div class="page-group">
+    <div class="page">
+        <div class="content">
+            <form method="post" id="pingjia">
+                <div class="content-block hw-list">
+                    <ul><input type="hidden" name="id" value="{:$_GET['id']}">
+                        <template v-for="(mykey,item) in data.snop" v-if="item.is_refunds == 0">
+                            <li>
+                                <div class="hlistbody">
+                                    <img :src="item.snopjson['thumbnail']">
+                                    <div class="row" style="margin-left: 85px">
+                                        <div class="col-68">
+                                            <h3>{{ item.snopjson['title'] }}</h3>
+                                            <span>{{ item.attr }}</span>
+                                        </div>
+                                        <div class="col-32">
+                                            <b>￥{{ item.money }}</b>
+                                            <span>x{{ item.nums }}</span>
+                                            <input type="hidden" name="commodityid[]" value="{{ item.snopjson['commodityid'] }}">
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="hfooter">
+                                    <group>
+                                        <x-textarea :max="500" placeholder="输入您对商品的评价" name="content[]"></x-textarea>
+                                    </group>
+                                </div>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </form>
+        </div>
+        <div class="queding" @click="tijiao">提交评价</div>
+    </div>
+</div>
+
+<script src="{:C('CDN_PATH')}__PUBLIC__/resource/dist/components/x-textarea/index.js?{:C('CDN_VERSION')}"></script>
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='{:C('CDN_PATH')}__PUBLIC__/resource/hw/js/config.js?{:C('CDN_VERSION')}' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/??sm.min.js,sm-extend.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='{:C('CDN_PATH')}__PUBLIC__/resource/hw/js/demos.js?{:C('CDN_VERSION')}' charset='utf-8'></script>
+<script>
+Vue.component('group', vuxGroup)
+Vue.component('x-textarea', vuxXTextarea)
+var vm = new Vue({
+        el: 'body',
+        data: {
+            data: {$data|json_encode}
+    },
+    methods: {
+    tijiao: function (id,key,event) {
+        $i = 0
+        $(".weui_textarea").each(function(){
+            if($(this).val() == ""){
+                $.toast("评论词不能为空！");
+                $i++
+            }
+        })
+        if($i>0){
+            return
+        }
+        $.post('__CONTROLLER__/evaluate_handle',$("#pingjia").serialize(),function(data){
+            $temp = $.parseJSON(data)
+            if($temp['status'] == "200"){
+                window.location.href = '/Home/order/index'
+            }else{
+                $.toast($temp['text']);
+            }
+        })
+    },
+}
+})
+</script>
+</body>
+</html>

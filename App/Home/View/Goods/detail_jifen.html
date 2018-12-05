@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{$data.title}</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="{:C('CDN_PATH')}__PUBLIC__/resource/hw/detail.css">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/??sm.min.css,sm-extend.min.css">
+    <script src="http://cdn.bootcss.com/vue/1.0.26/vue.min.js"></script>
+    <script src="http://cdn.bootcss.com/zepto/1.1.5/zepto.min.js"></script>
+    <style>
+        .goumai{width: 85%}
+        .kefu a{color:#000 }
+    </style>
+</head>
+<body>
+<div class="page-group">
+    <div class="page">
+        <nav class="bar bar-tab">
+            <div class="kefu" style="width: 15%">
+                <a href="tel://15267098952">
+                <span class="icon icon-message"></span>
+                <span>客服</span>
+                </a>
+            </div>
+            <div class="goumai" @click="goumai">
+                立即兑换
+            </div>
+        </nav>
+        <div class="content">
+            <div class="swiper-container" data-space-between='10'>
+                <div class="swiper-wrapper">
+                    <volist name="data.carrousel" id="vo">
+                        <div class="swiper-slide">
+                            <img src="{:C('CDN_PATH')}{$vo}?{:C('CDN_VERSION')}" alt="{$vo.title}">
+                        </div>
+                    </volist>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="content-padded goodsdetail">
+                <h1>{$data.title}</h1>
+                <div class="row">
+                    <div class="col-50">
+                        <b>{$data.current|intval}积分</b>
+                    </div>
+                    <div class="col-50 tr">已兑换：{$data.sales}件</div>
+                </div>
+            </div>
+
+            <div class="detailbox">
+                {$data.content|htmlspecialchars_decode}
+            </div>
+        </div>
+    </div>
+    <div class="popup popup-about">
+        <div class="content-block">
+            <div class="ptitle">
+                <div class="pimg">
+                    <img src="{:C('CDN_PATH')}{$data.thumbnail}?{:C('CDN_VERSION')}">
+                </div>
+                <div class="pbody">
+                    <b>{{ parseInt(current_money) }}积分</b>
+                    <p>库存：{{ current_attr.stock }} 件</p>
+                </div>
+
+                <span class="iconfont guanbi" @click="close">&#xe60b;</span>
+            </div>
+            <div class="guige">
+                <template v-for="item in shuxingji">
+                <p>{{ item.attr }}</p>
+                <ul>
+                    <template v-for="val in item.val">
+                    <li>{{ val }}</li>
+                    </template>
+                </ul>
+                <div class="clear"></div>
+                </template>
+            </div>
+            <div class="nub">
+                <div class="row" style="height: 25px">
+                    <div class="col-50">购买数量</div>
+                    <div class="col-50 tr">
+                        <span @click="jian">-</span>
+                        <span>{{ nubs }}</span>
+                        <span @click="jia">+</span>
+                    </div>
+                </div>
+            </div>
+            <div class="queding" @click="queding">确定</div>
+        </div>
+    </div>
+</div>
+<script type='text/javascript' src='{:C('CDN_PATH')}__PUBLIC__/resource/hw/js/config.js?{:C('CDN_VERSION')}' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/??sm.min.js,sm-extend.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='{:C('CDN_PATH')}__PUBLIC__/resource/hw/js/demos.js?{:C('CDN_VERSION')}' charset='utf-8'></script>
+<script>
+    $(function () {
+        $(".detailbox img").each(function(){
+            $(this).attr('href',$(this).attr('src'));
+        })
+
+        $(".guige ul li").click(function () {
+            $(this).siblings().removeClass('active')
+            if($(this).hasClass('active')){
+                $(this).removeClass('active')
+            }else{
+                $(this).addClass('active')
+            }
+
+            var sku = new Array();
+            $(".guige ul").each(function () {
+                if($(this).find('li.active').text() != null){
+                    sku.push($(this).find('li.active').text())
+                }
+            })
+            vm.sku = sku.join(',')
+
+            if(sku.length >= vm.shuxingji.length){
+                //后台查询价格和库存
+                $.post("__CONTROLLER__/get_attr/",{id:{:$_GET['id']},sku:vm.sku},function(data){
+                    vm.current_attr = data
+                    vm.current_money = vm.current_attr['attr_money']
+                })
+            }
+        })
+    })
+
+    var vm = new Vue({
+        el: 'html',
+        data: {
+            shuxingji : {$shuxingji},
+            islove : {$data.islove|default="0"},
+            nubs : 1,
+            guige : 0,
+            current_attr : {stock:10},
+            current_money:{$data.current},
+            type : 1,//1为购物车，2为购买
+            sku : '',
+        },
+        methods: {
+            jia:function(){
+                if(vm.nubs >= vm.current_attr['stock']){
+                    $.toast("库存不够！");
+                    return
+                }
+                vm.nubs++;
+            },
+            jian:function(){
+                if(vm.nubs == 0){
+                    return
+                }
+                vm.nubs--
+            },
+            goumai: function (event) {
+                vm.type = 2
+                $.popup('.popup-about');
+            },
+            close:function () {
+                $.closeModal('.popup-about')
+            },
+            queding:function(){
+                $.showIndicator()
+                if(vm.sku.split(',').length == vm.shuxingji.length){
+                    $.post('/Home/order/set_order_from_detail',{id:{:$_GET['id']},sku:vm.sku,nub:vm.nubs},function(data){
+                        $temp = $.parseJSON(data)
+                        if($temp['status'] == "200"){
+                            window.location.href = '/Home/order/jiesuan/?id='+$temp['text'];
+                        }else{
+                            $.toast($temp['text']);
+                        }
+                        $.hideIndicator();
+                    })
+                }else{
+                    $.toast("请先选择规格!");
+                }
+            },
+        }
+    })
+</script>
+</body>
+</html>

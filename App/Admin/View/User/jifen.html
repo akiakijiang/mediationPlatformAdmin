@@ -1,0 +1,73 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="//cdn.bootcss.com/jquery/2.0.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/resource/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/resource/assets/css/admin.css">
+    <script src="http://cdn.bootcss.com/vue/1.0.26/vue.min.js"></script>
+    <style>
+        body{font-size: 13px;overflow-y: scroll}
+        .am-panel{border: none;box-shadow: none;-webkit-box-shadow: none;margin-bottom:5px;}
+        .am-table>tbody>tr>td, .am-table>tbody>tr>th, .am-table>tfoot>tr>td, .am-table>tfoot>tr>th, .am-table>thead>tr>td, .am-table>thead>tr>th{border: none}
+        .am-table>caption+thead>tr:first-child>td, .am-table>caption+thead>tr:first-child>th, .am-table>colgroup+thead>tr:first-child>td, .am-table>colgroup+thead>tr:first-child>th, .am-table>thead:first-child>tr:first-child>td, .am-table>thead:first-child>tr:first-child>th{font-weight: normal}
+    </style>
+</head>
+<body>
+<div class="hw-content" style="padding: 20px;">
+    <form class="am-form am-form-horizontal" action="" method="post" id="from1" style="margin-left: 650px">
+        <div class="am-form-group">
+            <label for="doc-select-1" style="margin-right: 30px">剩余积分:</label>
+            {$jifen} 分
+        </div>
+        <div class="am-form-group">
+            <label for="doc-select-1" style="float: left;margin-right: 30px;margin-top: 8px">积分操作:</label>
+            <select id="doc-select-1" style="width: 300px">
+                <option value="1">积分核销</option>
+                <option value="2">积分充值</option>
+            </select>
+        </div>
+        <div class="am-form-group">
+            <label for="doc-select-1" style="float: left;margin-right: 43px;margin-top: 8px">积分值:</label>
+            <input type="text" class="am-form-field am-radius" placeholder="输入积分值" style="width: 300px" id="num"/>
+        </div>
+
+        <button type="submit" class="am-btn am-btn-primary" style="margin-left: 100px" @click="edit({$id})">提交修改</button>
+    </form>
+
+    <div style="clear: both"></div>
+</div>
+
+<!--[if lt IE 9]>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__PUBLIC__/resource/assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="__PUBLIC__/resource/layer/layer.js"></script>
+<script src="__PUBLIC__/resource/assets/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/resource/assets/js/hw-layer.js"></script>
+<script src="__PUBLIC__/resource/assets/js/app.js"></script>
+<script>
+    var vm = new Vue({
+        el: 'body',
+
+        methods: {
+           edit:function (id) {
+               var type     = $('#doc-select-1').val();
+               var jifen    = $('#num').val();
+               $.post("{:U('User/jifen_save')}",{id:id,type:type,jifen:jifen},function (data) {
+                   if(data.status == 200){
+                       layer.msg("修改成功",{icon:1,time:5000},function () {
+                           setTimeout(function () {
+                               parent.location.reload()
+                           },1500)
+                       });
+                   }
+               },"json");
+           }
+        }
+    })
+
+</script>
+</body>
+</html>

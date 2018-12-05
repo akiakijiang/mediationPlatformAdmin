@@ -1,0 +1,406 @@
+2017-03-10 13:21:50 pid:25768 Workerman[start.php] start in DEBUG mode
+2017-03-10 13:28:34 pid:25771 PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hw_tmls.chatlog' doesn't exist in /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php:1732
+Stack trace:
+#0 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1732): PDO->prepare('SELECT id,fromi...')
+#1 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1820): GatewayWorker\Lib\DbConnection->execute('SELECT id,fromi...', Array)
+#2 /mnt/www/html/huangwei/tmls/workermanL/Applications/Chat/Events.php(71): GatewayWorker\Lib\DbConnection->query()
+#3 [internal function]: Events::onMessage('7f0000010961000...', '{"type":"login"...')
+#4 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(369): call_user_func('Events::onMessa...', '7f0000010961000...', '{"type":"login"...')
+#5 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#6 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Connection/TcpConnection.php(480): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #48)
+#8 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Events/Select.php(250): call_user_func_array(Array, Array)
+#9 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1537): Workerman\Events\Select->loop()
+#10 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(183): Workerman\Worker->run()
+#11 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(936): GatewayWorker\BusinessWorker->run()
+#12 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(899): Workerman\Worker::forkOneWorker(Object(GatewayWorker\BusinessWorker))
+#13 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(431): Workerman\Worker::forkWorkers()
+#14 /mnt/www/html/huangwei/tmls/workermanL/start.php(37): Workerman\Worker::runAll()
+#15 {main}
+2017-03-10 13:28:34 pid:25771 WORKER EXIT UNEXPECTED 
+2017-03-10 13:28:34 pid:25768 worker[ChatBusinessWorker:25771] exit with status 64000
+2017-03-10 13:29:27 pid:25772 PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hw_tmls.chatlog' doesn't exist in /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php:1732
+Stack trace:
+#0 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1732): PDO->prepare('SELECT id,fromi...')
+#1 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1820): GatewayWorker\Lib\DbConnection->execute('SELECT id,fromi...', Array)
+#2 /mnt/www/html/huangwei/tmls/workermanL/Applications/Chat/Events.php(71): GatewayWorker\Lib\DbConnection->query()
+#3 [internal function]: Events::onMessage('7f0000010961000...', '{"type":"login"...')
+#4 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(369): call_user_func('Events::onMessa...', '7f0000010961000...', '{"type":"login"...')
+#5 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#6 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Connection/TcpConnection.php(480): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #48)
+#8 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Events/Select.php(250): call_user_func_array(Array, Array)
+#9 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1537): Workerman\Events\Select->loop()
+#10 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(183): Workerman\Worker->run()
+#11 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(936): GatewayWorker\BusinessWorker->run()
+#12 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(899): Workerman\Worker::forkOneWorker(Object(GatewayWorker\BusinessWorker))
+#13 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(431): Workerman\Worker::forkWorkers()
+#14 /mnt/www/html/huangwei/tmls/workermanL/start.php(37): Workerman\Worker::runAll()
+#15 {main}
+2017-03-10 13:29:27 pid:25772 WORKER EXIT UNEXPECTED 
+2017-03-10 13:29:27 pid:25768 worker[ChatBusinessWorker:25772] exit with status 64000
+2017-03-10 13:29:40 pid:25769 PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hw_tmls.chatlog' doesn't exist in /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php:1732
+Stack trace:
+#0 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1732): PDO->prepare('SELECT id,fromi...')
+#1 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1820): GatewayWorker\Lib\DbConnection->execute('SELECT id,fromi...', Array)
+#2 /mnt/www/html/huangwei/tmls/workermanL/Applications/Chat/Events.php(71): GatewayWorker\Lib\DbConnection->query()
+#3 [internal function]: Events::onMessage('7f0000010963000...', '{"type":"login"...')
+#4 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(369): call_user_func('Events::onMessa...', '7f0000010963000...', '{"type":"login"...')
+#5 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#6 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Connection/TcpConnection.php(480): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #54)
+#8 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Events/Select.php(250): call_user_func_array(Array, Array)
+#9 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1537): Workerman\Events\Select->loop()
+#10 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(183): Workerman\Worker->run()
+#11 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(936): GatewayWorker\BusinessWorker->run()
+#12 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(899): Workerman\Worker::forkOneWorker(Object(GatewayWorker\BusinessWorker))
+#13 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(431): Workerman\Worker::forkWorkers()
+#14 /mnt/www/html/huangwei/tmls/workermanL/start.php(37): Workerman\Worker::runAll()
+#15 {main}
+2017-03-10 13:29:40 pid:25769 WORKER EXIT UNEXPECTED 
+2017-03-10 13:29:40 pid:25768 worker[ChatBusinessWorker:25769] exit with status 64000
+2017-03-10 13:29:46 pid:25889 PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hw_tmls.chatlog' doesn't exist in /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php:1732
+Stack trace:
+#0 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1732): PDO->prepare('SELECT id,fromi...')
+#1 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1820): GatewayWorker\Lib\DbConnection->execute('SELECT id,fromi...', Array)
+#2 /mnt/www/html/huangwei/tmls/workermanL/Applications/Chat/Events.php(71): GatewayWorker\Lib\DbConnection->query()
+#3 [internal function]: Events::onMessage('7f0000010963000...', '{"type":"login"...')
+#4 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(369): call_user_func('Events::onMessa...', '7f0000010963000...', '{"type":"login"...')
+#5 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#6 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Connection/TcpConnection.php(480): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #53)
+#8 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Events/Select.php(250): call_user_func_array(Array, Array)
+#9 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1537): Workerman\Events\Select->loop()
+#10 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(183): Workerman\Worker->run()
+#11 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(936): GatewayWorker\BusinessWorker->run()
+#12 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(899): Workerman\Worker::forkOneWorker(Object(GatewayWorker\BusinessWorker))
+#13 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1052): Workerman\Worker::forkWorkers()
+#14 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(434): Workerman\Worker::monitorWorkers()
+#15 /mnt/www/html/huangwei/tmls/workermanL/start.php(37): Workerman\Worker::runAll()
+#16 {main}
+2017-03-10 13:29:46 pid:25889 WORKER EXIT UNEXPECTED 
+2017-03-10 13:29:46 pid:25768 worker[ChatBusinessWorker:25889] exit with status 64000
+2017-03-10 13:29:55 pid:25768 Workerman[start.php] Stopping ...
+2017-03-10 13:29:55 pid:25768 Workerman[start.php] has been stopped
+2017-03-10 13:30:36 pid:25905 Workerman[start.php] start in DEBUG mode
+2017-03-10 13:30:41 pid:25909 PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hw_tmls.chatlog' doesn't exist in /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php:1732
+Stack trace:
+#0 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1732): PDO->prepare('SELECT id,fromi...')
+#1 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1820): GatewayWorker\Lib\DbConnection->execute('SELECT id,fromi...', Array)
+#2 /mnt/www/html/huangwei/tmls/workermanL/Applications/Chat/Events.php(71): GatewayWorker\Lib\DbConnection->query()
+#3 [internal function]: Events::onMessage('7f0000010961000...', '{"type":"login"...')
+#4 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(369): call_user_func('Events::onMessa...', '7f0000010961000...', '{"type":"login"...')
+#5 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#6 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Connection/TcpConnection.php(480): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #52)
+#8 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Events/Select.php(250): call_user_func_array(Array, Array)
+#9 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1537): Workerman\Events\Select->loop()
+#10 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(183): Workerman\Worker->run()
+#11 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(936): GatewayWorker\BusinessWorker->run()
+#12 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(899): Workerman\Worker::forkOneWorker(Object(GatewayWorker\BusinessWorker))
+#13 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(431): Workerman\Worker::forkWorkers()
+#14 /mnt/www/html/huangwei/tmls/workermanL/start.php(37): Workerman\Worker::runAll()
+#15 {main}
+2017-03-10 13:30:41 pid:25909 WORKER EXIT UNEXPECTED 
+2017-03-10 13:30:41 pid:25905 worker[ChatBusinessWorker:25909] exit with status 64000
+2017-03-10 13:37:03 pid:25917 PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hw_tmls.chatlog' doesn't exist in /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php:1732
+Stack trace:
+#0 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1732): PDO->prepare('SELECT id,fromi...')
+#1 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1820): GatewayWorker\Lib\DbConnection->execute('SELECT id,fromi...', Array)
+#2 /mnt/www/html/huangwei/tmls/workermanL/Applications/Chat/Events.php(71): GatewayWorker\Lib\DbConnection->query()
+#3 [internal function]: Events::onMessage('7f0000010963000...', '{"type":"login"...')
+#4 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(369): call_user_func('Events::onMessa...', '7f0000010963000...', '{"type":"login"...')
+#5 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#6 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Connection/TcpConnection.php(480): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #52)
+#8 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Events/Select.php(250): call_user_func_array(Array, Array)
+#9 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1537): Workerman\Events\Select->loop()
+#10 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(183): Workerman\Worker->run()
+#11 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(936): GatewayWorker\BusinessWorker->run()
+#12 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(899): Workerman\Worker::forkOneWorker(Object(GatewayWorker\BusinessWorker))
+#13 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1052): Workerman\Worker::forkWorkers()
+#14 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(434): Workerman\Worker::monitorWorkers()
+#15 /mnt/www/html/huangwei/tmls/workermanL/start.php(37): Workerman\Worker::runAll()
+#16 {main}
+2017-03-10 13:37:03 pid:25917 WORKER EXIT UNEXPECTED 
+2017-03-10 13:37:03 pid:25905 worker[ChatBusinessWorker:25917] exit with status 64000
+2017-03-10 13:37:13 pid:25908 PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hw_tmls.chatlog' doesn't exist in /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php:1732
+Stack trace:
+#0 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1732): PDO->prepare('SELECT id,fromi...')
+#1 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1820): GatewayWorker\Lib\DbConnection->execute('SELECT id,fromi...', Array)
+#2 /mnt/www/html/huangwei/tmls/workermanL/Applications/Chat/Events.php(71): GatewayWorker\Lib\DbConnection->query()
+#3 [internal function]: Events::onMessage('7f0000010963000...', '{"type":"login"...')
+#4 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(369): call_user_func('Events::onMessa...', '7f0000010963000...', '{"type":"login"...')
+#5 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#6 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Connection/TcpConnection.php(480): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #54)
+#8 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Events/Select.php(250): call_user_func_array(Array, Array)
+#9 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1537): Workerman\Events\Select->loop()
+#10 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(183): Workerman\Worker->run()
+#11 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(936): GatewayWorker\BusinessWorker->run()
+#12 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(899): Workerman\Worker::forkOneWorker(Object(GatewayWorker\BusinessWorker))
+#13 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(431): Workerman\Worker::forkWorkers()
+#14 /mnt/www/html/huangwei/tmls/workermanL/start.php(37): Workerman\Worker::runAll()
+#15 {main}
+2017-03-10 13:37:13 pid:25908 WORKER EXIT UNEXPECTED 
+2017-03-10 13:37:13 pid:25905 worker[ChatBusinessWorker:25908] exit with status 64000
+2017-03-10 13:37:18 pid:25907 PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hw_tmls.chatlog' doesn't exist in /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php:1732
+Stack trace:
+#0 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1732): PDO->prepare('SELECT id,fromi...')
+#1 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1820): GatewayWorker\Lib\DbConnection->execute('SELECT id,fromi...', Array)
+#2 /mnt/www/html/huangwei/tmls/workermanL/Applications/Chat/Events.php(71): GatewayWorker\Lib\DbConnection->query()
+#3 [internal function]: Events::onMessage('7f0000010962000...', '{"type":"login"...')
+#4 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(369): call_user_func('Events::onMessa...', '7f0000010962000...', '{"type":"login"...')
+#5 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#6 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Connection/TcpConnection.php(480): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #48)
+#8 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Events/Select.php(250): call_user_func_array(Array, Array)
+#9 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1537): Workerman\Events\Select->loop()
+#10 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(183): Workerman\Worker->run()
+#11 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(936): GatewayWorker\BusinessWorker->run()
+#12 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(899): Workerman\Worker::forkOneWorker(Object(GatewayWorker\BusinessWorker))
+#13 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(431): Workerman\Worker::forkWorkers()
+#14 /mnt/www/html/huangwei/tmls/workermanL/start.php(37): Workerman\Worker::runAll()
+#15 {main}
+2017-03-10 13:37:18 pid:25907 WORKER EXIT UNEXPECTED 
+2017-03-10 13:37:18 pid:25905 worker[ChatBusinessWorker:25907] exit with status 64000
+2017-03-10 13:37:23 pid:25958 PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hw_tmls.chatlog' doesn't exist in /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php:1732
+Stack trace:
+#0 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1732): PDO->prepare('INSERT INTO `ch...')
+#1 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1820): GatewayWorker\Lib\DbConnection->execute('INSERT INTO `ch...', Array)
+#2 /mnt/www/html/huangwei/tmls/workermanL/Applications/Chat/Events.php(133): GatewayWorker\Lib\DbConnection->query()
+#3 [internal function]: Events::onMessage('7f0000010962000...', '{"type":"chatMe...')
+#4 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(369): call_user_func('Events::onMessa...', '7f0000010962000...', '{"type":"chatMe...')
+#5 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#6 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Connection/TcpConnection.php(480): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #52)
+#8 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Events/Select.php(250): call_user_func_array(Array, Array)
+#9 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1537): Workerman\Events\Select->loop()
+#10 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(183): Workerman\Worker->run()
+#11 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(936): GatewayWorker\BusinessWorker->run()
+#12 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(899): Workerman\Worker::forkOneWorker(Object(GatewayWorker\BusinessWorker))
+#13 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1052): Workerman\Worker::forkWorkers()
+#14 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(434): Workerman\Worker::monitorWorkers()
+#15 /mnt/www/html/huangwei/tmls/workermanL/start.php(37): Workerman\Worker::runAll()
+#16 {main}
+2017-03-10 13:37:23 pid:25958 WORKER EXIT UNEXPECTED 
+2017-03-10 13:37:23 pid:25905 worker[ChatBusinessWorker:25958] exit with status 64000
+2017-03-10 13:37:45 pid:25905 Workerman[start.php] Stopping ...
+2017-03-10 13:37:46 pid:25905 Workerman[start.php] has been stopped
+2017-03-10 13:46:46 pid:26258 Workerman[start.php] start in DEBUG mode
+2017-03-10 13:46:52 pid:26260 PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hw_tmls.chatlog' doesn't exist in /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php:1732
+Stack trace:
+#0 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1732): PDO->prepare('SELECT id,fromi...')
+#1 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1820): GatewayWorker\Lib\DbConnection->execute('SELECT id,fromi...', Array)
+#2 /mnt/www/html/huangwei/tmls/workermanL/Applications/Chat/Events.php(71): GatewayWorker\Lib\DbConnection->query()
+#3 [internal function]: Events::onMessage('7f0000010960000...', '{"type":"login"...')
+#4 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(369): call_user_func('Events::onMessa...', '7f0000010960000...', '{"type":"login"...')
+#5 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#6 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Connection/TcpConnection.php(480): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #48)
+#8 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Events/Select.php(250): call_user_func_array(Array, Array)
+#9 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1537): Workerman\Events\Select->loop()
+#10 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(183): Workerman\Worker->run()
+#11 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(936): GatewayWorker\BusinessWorker->run()
+#12 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(899): Workerman\Worker::forkOneWorker(Object(GatewayWorker\BusinessWorker))
+#13 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(431): Workerman\Worker::forkWorkers()
+#14 /mnt/www/html/huangwei/tmls/workermanL/start.php(37): Workerman\Worker::runAll()
+#15 {main}
+2017-03-10 13:46:52 pid:26260 WORKER EXIT UNEXPECTED 
+2017-03-10 13:46:52 pid:26258 worker[ChatBusinessWorker:26260] exit with status 64000
+2017-03-10 13:48:06 pid:26270 PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hw_tmls.chatlog' doesn't exist in /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php:1732
+Stack trace:
+#0 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1732): PDO->prepare('SELECT id,fromi...')
+#1 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1820): GatewayWorker\Lib\DbConnection->execute('SELECT id,fromi...', Array)
+#2 /mnt/www/html/huangwei/tmls/workermanL/Applications/Chat/Events.php(71): GatewayWorker\Lib\DbConnection->query()
+#3 [internal function]: Events::onMessage('7f0000010963000...', '{"type":"login"...')
+#4 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(369): call_user_func('Events::onMessa...', '7f0000010963000...', '{"type":"login"...')
+#5 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#6 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Connection/TcpConnection.php(480): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #52)
+#8 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Events/Select.php(250): call_user_func_array(Array, Array)
+#9 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1537): Workerman\Events\Select->loop()
+#10 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(183): Workerman\Worker->run()
+#11 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(936): GatewayWorker\BusinessWorker->run()
+#12 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(899): Workerman\Worker::forkOneWorker(Object(GatewayWorker\BusinessWorker))
+#13 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1052): Workerman\Worker::forkWorkers()
+#14 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(434): Workerman\Worker::monitorWorkers()
+#15 /mnt/www/html/huangwei/tmls/workermanL/start.php(37): Workerman\Worker::runAll()
+#16 {main}
+2017-03-10 13:48:06 pid:26270 WORKER EXIT UNEXPECTED 
+2017-03-10 13:48:06 pid:26258 worker[ChatBusinessWorker:26270] exit with status 64000
+2017-03-10 13:48:09 pid:26272 PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hw_tmls.chatlog' doesn't exist in /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php:1732
+Stack trace:
+#0 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1732): PDO->prepare('INSERT INTO `ch...')
+#1 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1820): GatewayWorker\Lib\DbConnection->execute('INSERT INTO `ch...', Array)
+#2 /mnt/www/html/huangwei/tmls/workermanL/Applications/Chat/Events.php(133): GatewayWorker\Lib\DbConnection->query()
+#3 [internal function]: Events::onMessage('7f0000010963000...', '{"type":"chatMe...')
+#4 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(369): call_user_func('Events::onMessa...', '7f0000010963000...', '{"type":"chatMe...')
+#5 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#6 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Connection/TcpConnection.php(480): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #53)
+#8 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Events/Select.php(250): call_user_func_array(Array, Array)
+#9 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1537): Workerman\Events\Select->loop()
+#10 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(183): Workerman\Worker->run()
+#11 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(936): GatewayWorker\BusinessWorker->run()
+#12 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(899): Workerman\Worker::forkOneWorker(Object(GatewayWorker\BusinessWorker))
+#13 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1052): Workerman\Worker::forkWorkers()
+#14 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(434): Workerman\Worker::monitorWorkers()
+#15 /mnt/www/html/huangwei/tmls/workermanL/start.php(37): Workerman\Worker::runAll()
+#16 {main}
+2017-03-10 13:48:09 pid:26272 WORKER EXIT UNEXPECTED 
+2017-03-10 13:48:09 pid:26258 worker[ChatBusinessWorker:26272] exit with status 64000
+2017-03-10 13:48:15 pid:26273 PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hw_tmls.chatlog' doesn't exist in /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php:1732
+Stack trace:
+#0 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1732): PDO->prepare('SELECT id,fromi...')
+#1 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1820): GatewayWorker\Lib\DbConnection->execute('SELECT id,fromi...', Array)
+#2 /mnt/www/html/huangwei/tmls/workermanL/Applications/Chat/Events.php(71): GatewayWorker\Lib\DbConnection->query()
+#3 [internal function]: Events::onMessage('7f0000010962000...', '{"type":"login"...')
+#4 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(369): call_user_func('Events::onMessa...', '7f0000010962000...', '{"type":"login"...')
+#5 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#6 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Connection/TcpConnection.php(480): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #52)
+#8 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Events/Select.php(250): call_user_func_array(Array, Array)
+#9 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1537): Workerman\Events\Select->loop()
+#10 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(183): Workerman\Worker->run()
+#11 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(936): GatewayWorker\BusinessWorker->run()
+#12 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(899): Workerman\Worker::forkOneWorker(Object(GatewayWorker\BusinessWorker))
+#13 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1052): Workerman\Worker::forkWorkers()
+#14 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(434): Workerman\Worker::monitorWorkers()
+#15 /mnt/www/html/huangwei/tmls/workermanL/start.php(37): Workerman\Worker::runAll()
+#16 {main}
+2017-03-10 13:48:15 pid:26273 WORKER EXIT UNEXPECTED 
+2017-03-10 13:48:15 pid:26258 worker[ChatBusinessWorker:26273] exit with status 64000
+2017-03-10 14:19:18 pid:26259 PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'field list' in /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php:1732
+Stack trace:
+#0 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1732): PDO->prepare('SELECT id,fromi...')
+#1 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1820): GatewayWorker\Lib\DbConnection->execute('SELECT id,fromi...', Array)
+#2 /mnt/www/html/huangwei/tmls/workermanL/Applications/Chat/Events.php(71): GatewayWorker\Lib\DbConnection->query()
+#3 [internal function]: Events::onMessage('7f0000010962000...', '{"type":"login"...')
+#4 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(369): call_user_func('Events::onMessa...', '7f0000010962000...', '{"type":"login"...')
+#5 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#6 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Connection/TcpConnection.php(480): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #49)
+#8 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Events/Select.php(250): call_user_func_array(Array, Array)
+#9 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1537): Workerman\Events\Select->loop()
+#10 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(183): Workerman\Worker->run()
+#11 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(936): GatewayWorker\BusinessWorker->run()
+#12 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(899): Workerman\Worker::forkOneWorker(Object(GatewayWorker\BusinessWorker))
+#13 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(431): Workerman\Worker::forkWorkers()
+#14 /mnt/www/html/huangwei/tmls/workermanL/start.php(37): Workerman\Worker::runAll()
+#15 {main}
+2017-03-10 14:19:18 pid:26259 WORKER EXIT UNEXPECTED 
+2017-03-10 14:19:18 pid:26258 worker[ChatBusinessWorker:26259] exit with status 64000
+2017-03-10 14:25:51 pid:26258 Workerman[start.php] Stopping ...
+2017-03-10 14:25:51 pid:26258 Workerman[start.php] has been stopped
+2017-03-10 14:26:40 pid:27738 Workerman[start.php] start in DEBUG mode
+2017-03-10 14:26:44 pid:27742 PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'field list' in /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php:1732
+Stack trace:
+#0 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1732): PDO->prepare('SELECT id,fromi...')
+#1 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1820): GatewayWorker\Lib\DbConnection->execute('SELECT id,fromi...', Array)
+#2 /mnt/www/html/huangwei/tmls/workermanL/Applications/Chat/Events.php(71): GatewayWorker\Lib\DbConnection->query()
+#3 [internal function]: Events::onMessage('7f0000010960000...', '{"type":"login"...')
+#4 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(369): call_user_func('Events::onMessa...', '7f0000010960000...', '{"type":"login"...')
+#5 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#6 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Connection/TcpConnection.php(480): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #48)
+#8 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Events/Select.php(250): call_user_func_array(Array, Array)
+#9 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1537): Workerman\Events\Select->loop()
+#10 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(183): Workerman\Worker->run()
+#11 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(936): GatewayWorker\BusinessWorker->run()
+#12 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(899): Workerman\Worker::forkOneWorker(Object(GatewayWorker\BusinessWorker))
+#13 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(431): Workerman\Worker::forkWorkers()
+#14 /mnt/www/html/huangwei/tmls/workermanL/start.php(37): Workerman\Worker::runAll()
+#15 {main}
+2017-03-10 14:26:44 pid:27742 WORKER EXIT UNEXPECTED 
+2017-03-10 14:26:44 pid:27738 worker[ChatBusinessWorker:27742] exit with status 64000
+2017-03-10 14:34:20 pid:27750 PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type' in 'where clause' in /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php:1732
+Stack trace:
+#0 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1732): PDO->prepare('SELECT id,fromi...')
+#1 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1820): GatewayWorker\Lib\DbConnection->execute('SELECT id,fromi...', Array)
+#2 /mnt/www/html/huangwei/tmls/workermanL/Applications/Chat/Events.php(71): GatewayWorker\Lib\DbConnection->query()
+#3 [internal function]: Events::onMessage('7f0000010961000...', '{"type":"login"...')
+#4 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(369): call_user_func('Events::onMessa...', '7f0000010961000...', '{"type":"login"...')
+#5 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#6 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Connection/TcpConnection.php(480): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #50)
+#8 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Events/Select.php(250): call_user_func_array(Array, Array)
+#9 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1537): Workerman\Events\Select->loop()
+#10 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(183): Workerman\Worker->run()
+#11 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(936): GatewayWorker\BusinessWorker->run()
+#12 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(899): Workerman\Worker::forkOneWorker(Object(GatewayWorker\BusinessWorker))
+#13 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1052): Workerman\Worker::forkWorkers()
+#14 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(434): Workerman\Worker::monitorWorkers()
+#15 /mnt/www/html/huangwei/tmls/workermanL/start.php(37): Workerman\Worker::runAll()
+#16 {main}
+2017-03-10 14:34:20 pid:27750 WORKER EXIT UNEXPECTED 
+2017-03-10 14:34:20 pid:27738 worker[ChatBusinessWorker:27750] exit with status 64000
+2017-03-10 14:39:14 pid:27738 Workerman[start.php] Stopping ...
+2017-03-10 14:39:14 pid:27738 Workerman[start.php] has been stopped
+2017-03-10 14:39:20 pid:27890 Workerman[start.php] start in DEBUG mode
+2017-03-10 14:41:40 pid:27893 PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY' in /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php:1740
+Stack trace:
+#0 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1740): PDOStatement->execute()
+#1 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1820): GatewayWorker\Lib\DbConnection->execute('INSERT INTO `ch...', Array)
+#2 /mnt/www/html/huangwei/tmls/workermanL/Applications/Chat/Events.php(133): GatewayWorker\Lib\DbConnection->query()
+#3 [internal function]: Events::onMessage('7f0000010962000...', '{"type":"chatMe...')
+#4 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(369): call_user_func('Events::onMessa...', '7f0000010962000...', '{"type":"chatMe...')
+#5 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#6 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Connection/TcpConnection.php(480): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #52)
+#8 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Events/Select.php(250): call_user_func_array(Array, Array)
+#9 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1537): Workerman\Events\Select->loop()
+#10 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(183): Workerman\Worker->run()
+#11 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(936): GatewayWorker\BusinessWorker->run()
+#12 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(899): Workerman\Worker::forkOneWorker(Object(GatewayWorker\BusinessWorker))
+#13 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(431): Workerman\Worker::forkWorkers()
+#14 /mnt/www/html/huangwei/tmls/workermanL/start.php(37): Workerman\Worker::runAll()
+#15 {main}
+2017-03-10 14:41:40 pid:27893 WORKER EXIT UNEXPECTED 
+2017-03-10 14:41:40 pid:27890 worker[ChatBusinessWorker:27893] exit with status 64000
+2017-03-10 14:42:45 pid:27890 Workerman[start.php] Stopping ...
+2017-03-10 14:42:45 pid:27890 Workerman[start.php] has been stopped
+2017-03-10 14:42:52 pid:27911 Workerman[start.php] start in DEBUG mode
+2017-03-10 14:43:09 pid:27913 PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY' in /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php:1740
+Stack trace:
+#0 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1740): PDOStatement->execute()
+#1 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/Lib/DbConnection.php(1820): GatewayWorker\Lib\DbConnection->execute('INSERT INTO `ch...', Array)
+#2 /mnt/www/html/huangwei/tmls/workermanL/Applications/Chat/Events.php(133): GatewayWorker\Lib\DbConnection->query()
+#3 [internal function]: Events::onMessage('7f0000010960000...', '{"type":"chatMe...')
+#4 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(369): call_user_func('Events::onMessa...', '7f0000010960000...', '{"type":"chatMe...')
+#5 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#6 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Connection/TcpConnection.php(480): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #50)
+#8 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Events/Select.php(250): call_user_func_array(Array, Array)
+#9 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(1537): Workerman\Events\Select->loop()
+#10 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/gateway-worker/src/BusinessWorker.php(183): Workerman\Worker->run()
+#11 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(936): GatewayWorker\BusinessWorker->run()
+#12 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(899): Workerman\Worker::forkOneWorker(Object(GatewayWorker\BusinessWorker))
+#13 /mnt/www/html/huangwei/tmls/workermanL/vendor/workerman/workerman/Worker.php(431): Workerman\Worker::forkWorkers()
+#14 /mnt/www/html/huangwei/tmls/workermanL/start.php(37): Workerman\Worker::runAll()
+#15 {main}
+2017-03-10 14:43:09 pid:27913 WORKER EXIT UNEXPECTED 
+2017-03-10 14:43:09 pid:27911 worker[ChatBusinessWorker:27913] exit with status 64000
+2017-03-15 14:53:38 pid:13077 Workerman[start.php] start in DEBUG mode
+2017-03-15 17:01:43 pid:14337 Workerman[start.php] start in DEBUG mode
+2017-03-16 09:53:16 pid:22398 Workerman[start.php] start in DEBUG mode
+2017-03-17 09:07:55 pid:1304 Workerman[start.php] start in DEBUG mode
+2017-03-17 14:42:03 pid:5422 Workerman[start.php] start in DEBUG mode
+2017-03-20 09:37:40 pid:31406 Workerman[start.php] start in DEBUG mode
+2017-03-24 11:37:58 pid:4164 Workerman[start.php] start in DEBUG mode
+2017-03-24 13:20:51 pid:4956 Workerman[start.php] start in DEBUG mode
+2017-03-24 13:20:51 pid:4956 Workerman[start.php] already running
+2017-03-24 13:21:06 pid:4958 Workerman[start.php] start in DEBUG mode
+2017-03-24 13:21:06 pid:4958 Workerman[start.php] already running
+2017-03-24 14:30:22 pid:5464 Workerman[start.php] start in DEBUG mode
+2017-03-27 09:15:36 pid:26288 Workerman[start.php] start in DEBUG mode
+2017-03-27 09:23:33 pid:26344 Workerman[start.php] start in DAEMON mode
+2017-03-27 09:23:33 pid:26344 Workerman[start.php] already running
+2017-03-27 09:23:46 pid:26345 Workerman[start.php] stop 
+2017-03-27 09:23:46 pid:26345 Workerman[start.php] is stoping ...
+2017-03-27 09:23:46 pid:26288 Workerman[start.php] Stopping ...
+2017-03-27 09:23:46 pid:26288 Workerman[start.php] has been stopped
+2017-03-27 09:23:46 pid:26345 Workerman[start.php] stop success
+2017-03-27 09:23:56 pid:26346 Workerman[start.php] start in DAEMON mode
+2017-04-26 14:39:29 pid:9074 Workerman[start.php] start in DEBUG mode
+2017-04-26 14:42:44 pid:9124 Workerman[start.php] start in DEBUG mode

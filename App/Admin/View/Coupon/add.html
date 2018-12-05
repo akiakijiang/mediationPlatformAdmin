@@ -1,0 +1,171 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script type="text/javascript" src="http://lib.h-ui.net/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/resource/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/resource/assets/css/admin.css">
+    <script src="http://cdn.bootcss.com/vue/1.0.26/vue.min.js"></script>
+    <style>
+        body{overflow-y: auto;font-size: 13px;}
+        .am-tabs-bd{border:0px;}
+        .am-icon-check-circle{color:green;}
+        .am-icon-times-circle{color:red;}
+        table>tbody>tr>td,table>tbody>tr>th{text-align:center;vertical-align:middle;}
+    </style>
+</head>
+<body>
+<div class="hw-content" style="padding: 20px;">
+<if condition="$data.id neq '' ">
+    <div class="am-tabs"  data-am-tabs="{noSwipe: 1}">
+        <ul class="am-tabs-nav am-nav am-nav-tabs">
+            <li class="am-active"><a href="#tab1">优惠券详情</a></li>
+            <li><a href="#tab2">查看兑换码</a></li>
+        </ul>
+        <div class="am-tabs-bd">
+            <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+</if>
+                <form action="__CONTROLLER__/handle" method="post" class="am-form" onsubmit="return handle()" id="form1">
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-3 am-u-md-2 am-text-right">种类</div>
+                        <div class="am-u-sm-3 am-u-md-5 am-u-end col-end">
+                            <select name="type" id="type" class="form-control valid" aria-invalid="false" style="height: 35px;font-size: 13px">
+                                <option value="1" {$data['type']!=2?"selected":""}>无门槛抵用券</option>
+                                <option value="2" {$data['type']==2?"selected":""}>满减抵用券</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-3 am-u-md-2 am-text-right">面额</div>
+                        <div class="am-u-sm-3 am-u-md-5">
+                            <input type="number" class="am-input-sm" name="facevalue" placeholder="请输入面额" value="{$data.facevalue}" max="999" required>
+                        </div>
+                        <div class="am-hide-sm-only am-u-md-5">注：最大面额为999</div>
+                    </div>
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-3 am-u-md-2 am-text-right">开始时间</div>
+                        <div class="am-u-sm-3 am-u-md-5">
+                            <input type="text" class=" am-input-sm" name="starttime"  placeholder="请选择开始时间" value="{$data['starttime']?$data['starttime']|date="Y-m-d",###:""}" data-am-datepicker readonly required style="cursor: pointer;" required/>
+                        </div>
+                        <div class="am-hide-sm-only am-u-md-6"></div>
+                    </div>
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-3 am-u-md-2 am-text-right">结束时间</div>
+                        <div class="am-u-sm-3 am-u-md-5">
+                            <input type="text" class=" am-input-sm" name="endtime"  placeholder="请选择结束时间" value="{$data['endtime']?$data['endtime']|date="Y-m-d",###:""}" data-am-datepicker readonly required style="cursor: pointer;" required/>
+                        </div>
+                        <div class="am-hide-sm-only am-u-md-6"></div>
+                    </div>
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-3 am-u-md-2 am-text-right">下限</div>
+                        <div class="am-u-sm-3 am-u-md-5">
+                            <input type="number" id="condition" class="am-input-sm" name="condition" placeholder="请输入下限" value="{$data.condition}" required>
+                        </div>
+                        <div class="am-hide-sm-only am-u-md-5">注：如果是无门槛抵用券，下限不填</div>
+                    </div>
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-sm-2 am-u-md-2 am-text-right">数量</div>
+                        <div class="am-u-sm-3 am-u-md-5">
+                            <input type="number" class="am-input-sm" name="num" placeholder="请输入数量" value="{$data.num}" required>
+                        </div>
+                        <div class="am-hide-sm-only am-u-md-2"></div>
+                    </div>
+
+                    <div class="am-g am-margin-top-sm">
+                        <div class="am-u-sm-8 am-u-sm-offset-3">
+                            <if condition="$data.id eq '' ">
+                                <button type="submit" class="am-btn am-btn-primary">添加优惠券</button>
+                            </if>
+                        </div>
+                    </div>
+                </form>
+<if condition="$data.id neq '' ">
+            </div>
+            <div class="am-tab-panel am-fade" id="tab2">
+                <form action="{:U('Coupon/excel')}" method="post">
+                    <input type="hidden" name="excel" value="{$data.id}">
+                    <button type="submit" class="am-btn am-btn-success">导出兑换码</button>
+                </form>
+                <br><br>
+                <table class="am-table am-table-striped am-table-hover">
+                    <tr>
+                        <th>ID</th>
+                        <th>兑换码</th>
+                        <th>是否发放</th>
+                        <th>是否领取</th>
+                    </tr>
+                    <foreach name="data.cdkey" item="v">
+                        <tr>
+                            <td>{$key+1}</td>
+                            <td>{$v.cdkey}</td>
+                            <td><eq name="v.is_issue" value="0"><span class='am-badge am-badge-warning am-radius' onclick='handle_issue(this,{$v.id})' style="cursor:pointer;">点击发放</span><else/><span class='am-icon-check-circle'></span></eq></td>
+                            <td>{$v["getuid"]==0?"<span class='am-icon-times-circle'></span>":"<span class='am-icon-check-circle'></span>"}</td>
+                        </tr>
+                    </foreach>
+                </table>
+            </div>
+        </div>
+    </div>
+</if>
+    <div style="clear: both"></div>
+</div>
+
+<!--[if lt IE 9]>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__PUBLIC__/resource/assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="__PUBLIC__/resource/layer/layer.js"></script>
+<script src="__PUBLIC__/resource/assets/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/resource/assets/js/hw-layer.js"></script>
+<script src="__PUBLIC__/resource/assets/js/app.js"></script>
+<script>
+    function handle() {
+        $.post("{:U('Coupon/handle')}",$("#form1").serialize(),function (data) {
+            $temp = $.parseJSON(data)
+            if($temp['status'] == "200"){
+                layer.msg($temp['text'],{icon:1,time:1000},function () {
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.location.reload()
+                    parent.layer.close(index);
+                })
+            }else{
+                layer.msg($temp['text'],{icon:2,time:1000});
+            }
+        })
+        return false;
+    }
+    function handle_issue(t,id) {
+        $.post("{:U('Coupon/handle')}","id="+id,function (data) {
+            $temp = $.parseJSON(data)
+            if($temp['status'] == "200"){
+                $(t).replaceWith("<span class='am-icon-check-circle'></span>");
+                layer.msg($temp['text'],{icon:1,time:1000});
+
+            }else{
+                layer.msg($temp['text'],{icon:2,time:1000});
+            }
+        })
+    }
+    type_change();
+    function type_change(){
+        if($("#type").val()==1){
+            $("#condition").attr("disabled",true);
+            $("#condition").val(0);
+        }else{
+            $("#condition").removeAttr("disabled");
+            $("#condition").val('');
+        }
+    }
+    $("#type").change(function(){
+        type_change();
+    });
+</script>
+</body>
+</html>

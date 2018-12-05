@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>合作建议</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/??sm.min.css,sm-extend.min.css">
+    <script type='text/javascript' src='{:C('CDN_PATH')}__PUBLIC__/resource/hw/js/config.js?{:C('CDN_VERSION')}' charset='utf-8'></script>
+    <script type='text/javascript' src='{:C('CDN_PATH')}__PUBLIC__/resource/hw/js/demos.js?{:C('CDN_VERSION')}' charset='utf-8'></script>
+    <style>
+        .hezuo,.hua{margin: 20px 15px;background: #ffffff;padding: 10px;}
+        .hua b{font-size: 14px;font-weight: normal;color: #000}
+        .hua p{font-size: 12px;margin-top: 0px;color: #898989}
+        .hua input[type='text'],textarea,.hua input[type='tel']{display: block; width: 100%;  height: 34px;  padding: 6px 12px;  font-size: 14px;  line-height: 1.42857143;  color: #555;  background-color: #fff;  background-image: none;  border: 1px solid #ccc;  border-radius: 4px;  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
+        textarea{height: 80px}
+        .hua input[type='button']{display: inline-block;width: 100%;  padding: 6px 12px;  margin-bottom: 0;  font-size: 14px;  font-weight: 400;  line-height: 1.42857143;
+            text-align: center;  white-space: nowrap;  vertical-align: middle;  -ms-touch-action: manipulation;  touch-action: manipulation;  cursor: pointer;  -webkit-user-select: none;  -moz-user-select: none;  -ms-user-select: none;  user-select: none;  color: #fff;  border: 1px solid transparent;  border-radius: 4px;background-color: #ff0043;  border-color: #ff0043;font-size: 15px;height: 35px;margin-top: 10px;}
+
+    </style>
+</head>
+<body>
+<div class="page-group">
+    <div class="page" style="background: #f4f4f4" id="page-preloader">
+        <div class="content">
+            <div class="hua">
+                <form action="{:U('apply/appdo/')}" method="post" id="from1">
+                    <b>您想说的话：</b>
+                    <p>您的建议、合作、推荐产品都可以写在下面</p>
+                    <p>
+                        <textarea rows="3" cols="20" name="content"></textarea>
+                    </p>
+                    <b>您的电话：</b>
+                    <p>方便我们与您进行联系、沟通</p>
+                    <p><input type="tel" name="phone"></p>
+                    <b>您的微信：</b>
+                    <p>方便我们与您进行联系、沟通</p>
+                    <p><input type="text" name="weixin"></p>
+                    <p><input type="button" value="提交" id="tijiao"></p>
+                </form>
+            </div>
+        </div>
+        <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/??sm.min.js,sm-extend.min.js' charset='utf-8'></script>
+        <script>
+            $(document).on("pageInit", "#page-preloader", function(e, id, page) {
+                $(page).on('click','#tijiao', function () {
+                    $.showIndicator();
+                    $.post("{:U('apply/appdo/')}",$("#from1").serialize(),function (data) {
+                        $r = $.parseJSON(data);
+                        if($r['status'] == "200"){
+                            window.location.href = "/Home/center/index"
+                        }else{
+                            $.toast($r['text']);
+                        }
+                        $.hideIndicator();
+                    })
+                });
+            });
+        </script>
+    </div>
+</div>
+</body>
+</html>

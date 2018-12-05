@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>我的积分</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/??sm.min.css,sm-extend.min.css">
+    <script src="http://cdn.bootcss.com/vue/1.0.26/vue.min.js"></script>
+</head>
+<body>
+<div class="page-group">
+    <div class="page">
+        <style>
+            p{margin: 0px;}
+            .page, .page-group{background: rgb(238,238,238)}
+            .jifen{margin: 10px 0px;background: #fff;min-height: 30px;padding: 10px 10px 20px 10px;}
+            .jifen p{margin: 0px;font-size: 14px;color: #141417}
+            .jifen b{text-align: center;color: #ff0043;display: block}
+            p.jilu{padding-left: 10px;font-size: 14px;color: rgb(153,153,153)}
+            .jfjl{padding-bottom: 45px}
+            .jfjl .item-title{font-size: 14px;}
+            .jfjl .item-title p{font-size: 12px;color: rgb(153,153,153)}
+            .jfjl .item-after{font-size: 14px;color: #ff0043;}
+            .huanli{height: 49px;background: rgb(225,12,67);position: fixed;bottom: 0px;z-index: 99999;width: 100%;text-align: center;line-height: 49px;font-size: 16px;color: #fff}
+        </style>
+        <div class="content infinite-scroll infinite-scroll-bottom">
+            <div class="jifen">
+                <p>可用积分:</p>
+                <b>{$integra}积分</b>
+            </div>
+            <p class="jilu">积分记录</p>
+            <div class="list-block jfjl" style="margin-top: 10px;">
+                <ul>
+                    <template v-for="item in data">
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">
+                                {{ item.snop.title }}
+                                <p>{{ item.time }}</p>
+                            </div>
+                            <div class="item-after">+{{ item.integral }}</div>
+                        </div>
+                    </li>
+                    </template>
+                </ul>
+            </div>
+            <div class="infinite-scroll-preloader" v-if=" data.length >=12">
+                <div class="preloader"></div>
+            </div>
+        </div>
+        <div class="huanli" @click="url">去换礼</div>
+    </div>
+</div>
+
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='{:C('CDN_PATH')}__PUBLIC__/resource/hw/js/config.js?{:C('CDN_VERSION')}' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/??sm.min.js,sm-extend.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='{:C('CDN_PATH')}__PUBLIC__/resource/hw/js/demos.js?{:C('CDN_VERSION')}' charset='utf-8'></script>
+<script>
+    var loading = false;
+    // 最多可加载的条目
+    var page = 2;
+    function addItems() {
+        $.post('/Home/integral/index?page='+page,function (data) {
+            if(data == "0"){
+                $.toast('没有了', 2345, 'success top');
+                $.detachInfiniteScroll($('.infinite-scroll'));
+                $('.infinite-scroll-preloader').remove();
+            }else{
+                page++
+                $temp = $.parseJSON(data);
+                vm.data = vm.data.concat($temp)
+            }
+            loading = false;
+            $.hideIndicator();
+        })
+    }
+    // 注册'infinite'事件处理函数
+    $(document).on('infinite', '.infinite-scroll-bottom',function() {
+        $.showIndicator();
+        // 如果正在加载，则退出
+        if (loading) return;
+        // 设置flag
+        loading = true;
+        addItems();
+        $.refreshScroller();
+    });
+    var vm = new Vue({
+        el: 'body',
+        data: {
+            data : {$data|json_encode},
+        },
+        methods: {
+            url:function () {
+                window.location.href = '/Home/goods/jifen'
+            }
+        }
+    })
+</script>
+</body>
+</html>

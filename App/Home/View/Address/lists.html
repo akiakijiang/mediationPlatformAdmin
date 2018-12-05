@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>管理收货地址</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/??sm.min.css,sm-extend.min.css">
+    <script src="http://cdn.bootcss.com/vue/1.0.26/vue.min.js"></script>
+    <link rel="stylesheet" href="{:C('CDN_PATH')}__PUBLIC__/resource/font/iconfont.css?{:C('CDN_VERSION')}">
+    <style>
+        .content{background: #eeeeee}
+        .addbox{background: #fff;margin-top: 10px;padding: 10px;}
+        .addbox .col-50{font-size: 14px !important}
+        .text-right{text-align: right}
+        .ladd{font-size: 12px;margin: 5px 0px;}
+        .contorl{border-top: 1px solid #eeeeee;padding-top: 10px;margin-top: 5px;height: 40px;font-size: 12px !important}
+        .contorl p{margin: 0px;}
+        .bianji{width: 80px;height: 30px;text-align: center;display: inline-block;line-height: 30px;font-size: 13px;background: #4ECC80;color: #fff;}
+        .del{width: 80px;height: 30px;text-align: center;display: inline-block;line-height: 30px;font-size: 13px;background:#FF0043;color: #fff;margin-left: 10px !important;}
+        .addnew{height: 49px;position: fixed;bottom: 0px;left: 0px;text-align: center;width: 100%;font-size: 14px;background: rgb(255,0,67);line-height: 49px;color: #fff;z-index: 9999}
+        .queding{height: 49px;position: absolute;bottom: 0px;left: 0px;width: 100%;line-height: 49px;text-align: center;background: #ff0043;color: #fff}
+        .list-block ul:before,.list-block ul:after{height: 0px;}
+    </style>
+</head>
+<body>
+<div class="page-group">
+    <div class="page" id="page-city-picker">
+        <div class="addnew" @click="addnew">新增收货地址</div>
+        <div class="content">
+            <template v-for="(key,item) in lists">
+            <div class="addbox">
+                <div class="row">
+                    <div class="col-50">{{ item.name }}</div>
+                    <div class="col-50 text-right">{{ item.phone }}</div>
+                </div>
+                <div class="ladd">{{ item.province }} {{ item.city }} {{ item.district }} {{ item.address }}</div>
+                <div class="contorl">
+                    <p class="pull-left" style="margin-top: 5px;color: #eb4f38" v-if="item.is_default==1"><i class="iconfont" style="display: inline-block;margin-right: 5px;font-size: 16px">&#xe618;</i>默认地址</p>
+                    <p class="pull-left" style="margin-top: 5px;" v-else @click="shezhi(key,item.addressid)"><i class="iconfont" style="display: inline-block;margin-right: 5px;font-size: 16px">&#xe614;</i>设为默认</p>
+                    <p class="pull-right" @click="del(item.addressid,this)" style="margin-left: 10px;"><i class="iconfont" style="display: inline-block;margin-right: 5px">&#xe615;</i><span>删除</span></p>
+                    <p class="pull-right" @click="edit(key,this)" style="margin-top: 6px"><i class="iconfont icon-bianji" style="display: inline-block;font-size: 17px"></i><span>编辑</span></p>
+                </div>
+            </div>
+            </template>
+        </div>
+    </div>
+    <div class="popup popup-about">
+        <div class="list-block">
+            <form method="post" id="address">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-name"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">姓名</div>
+                                <div class="item-input">
+                                    <input type="hidden" name="id" v-if="data.address != null" value="{{ data.address['addressid'] }}">
+                                    <input type="text" placeholder="请输入收货人姓名" name="name" value="{{ data.address['name'] }}">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-email"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">电话</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="请输入收货人联系方式" name="phone" value="{{ data.address['phone'] }}">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-email"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">所在地区</div>
+                                <div class="item-input">
+                                    <input type="text" id='city-picker' name="province" value="{{ data.address.province }} {{ data.address.city }} {{ data.address.district }}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="align-top">
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-comment"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">详细地址</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="请输入详细地址" name="address" value="{{ data.address['address'] }}">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <div class="queding" @click="save()">保存地址</div>
+    </div>
+</div>
+
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='{:C('CDN_PATH')}__PUBLIC__/resource/hw/js/config.js?{:C('CDN_VERSION')}' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/??sm.min.js,sm-extend.min.js' charset='utf-8'></script>
+<script type="text/javascript" src="//g.alicdn.com/msui/sm/0.6.2/js/sm-city-picker.min.js" charset="utf-8"></script>
+<script type='text/javascript' src='{:C('CDN_PATH')}__PUBLIC__/resource/hw/js/demos.js?{:C('CDN_VERSION')}' charset='utf-8'></script>
+<script>
+    var vm = new Vue({
+        el: 'html',
+        data: {
+            lists:{$data|json_encode},
+            data:{
+                address:{
+                    province:"浙江",
+                    city:"杭州",
+                    district:"滨江区"
+                }
+            },
+            type:'1',
+        }, methods: {
+            del: function (id,event) {
+                $.confirm('确定要删除该地址吗？', function () {
+                    $.get('__CONTROLLER__/del',{id:id},function (data) {
+                        $temp = $.parseJSON(data);
+                        if($temp['status'] == "200"){
+                            vm.lists.$remove(vm.lists[event.$index])
+                        }
+                        $.toast($temp['text']);
+                    })
+                });
+            },
+            addnew:function(){
+                $.popup('.popup-about')
+                vm.type = 1
+            },
+            edit:function(key){
+                $.popup('.popup-about')
+                vm.data.address =  vm.lists[key]
+                vm.type = 2
+            },
+            shezhi:function(key,id){
+                $.get("__CONTROLLER__/set_default?id="+id,function(data){
+                    $temp = $.parseJSON(data);
+                    if($temp['status'] == "200"){
+                        $.each(vm.lists,function(i,item){
+                            vm.lists[i]['is_default'] = 0
+                        })
+                        vm.lists[key]['is_default'] = 1
+                    }
+                    $.toast($temp['text']);
+                })
+            },
+            save:function(){
+                if(vm.type == 1){
+                    //新增
+                    $.showIndicator();
+                    $.post('/Home/address/add/',$("#address").serialize(),function(data){
+                        $temp = $.parseJSON(data);
+                        if($temp['status'] == "200"){
+                            vm.lists.push($temp['text'])
+                            $.hideIndicator();
+                        }else{
+                            $.toast($temp['text']);
+                        }
+                    })
+                }else{
+                    $.showIndicator();
+                    $.post('/Home/address/edit',$("#address").serialize(),function(data){
+                        $temp = $.parseJSON(data);
+                        if($temp['status'] == "200"){
+                            vm.data.address.name = $temp['text'].name;
+                            vm.data.address.phone = $temp['text'].phone;
+                            vm.data.address.province = $temp['text'].province;
+                            vm.data.address.address = $temp['text'].address;
+                        }else{
+                            $.toast($temp['text']);
+                        }
+                        $.hideIndicator();
+                    })
+                }
+                $.closeModal('.popup-about')
+            }
+        }
+    })
+</script>
+</body>
+</html>

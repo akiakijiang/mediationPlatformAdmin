@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" style="width: 100%;height: 100%;">
+<head>
+    <meta charset="UTF-8">
+    <title>我的专属推广海报</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="{:C('CDN_PATH')}__PUBLIC__/resource/css/hindex.css?{:C('CDN_VERSION')}">
+</head>
+<body class="grhb" style="width: 100%;height: 100%;margin: 0px;">
+    <div class="" style="width:250px;padding:10px 10px;margin:62px auto;color: #fff;text-align: center">
+        {$user.nickname}
+    </div>
+
+    <div id="code" style="width: 100px;height: 100px;padding: 10px;box-shadow: 0 0 5px rgba(142,142,142,1);margin-top: 240px;">
+    <img src="{:C('SITE_PATH')}Home/user/code?url={$url}&id={$user.id}" width="100" height="100">
+    </div>
+</body>
+</html>

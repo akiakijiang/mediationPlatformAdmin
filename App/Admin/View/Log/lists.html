@@ -1,0 +1,66 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="__PUBLIC__/resource/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/resource/assets/css/admin.css">
+    <script src="//cdn.bootcss.com/vue/1.0.24/vue.min.js"></script>
+    <style>
+        .am-btn-default{background: none}
+        .am-dropdown-content{z-index: 9999;background: #fff}
+    </style>
+</head>
+<body>
+<div class="am-cf admin-main2">
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+            <div class="am-cf am-padding am-padding-bottom-0 am-animation-slide-top hw-nav" >
+                <div class="am-fl am-cf">
+                    <ol class="am-breadcrumb">
+                        <li class="am-active">操作日志</li>
+                    </ol>
+                </div>
+                <div class="am-fr am-cr">
+                    <a class="am-btn am-btn-warning hw-shuaxin" href="javascript:location.replace(location.href);">
+                        <i class="am-icon-refresh"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="am-g am-animation-slide-right">
+                <div class="am-u-sm-12">
+                    <div class="am-g error-log">
+                        <div class="am-u-sm-12 am-u-sm-centered">
+                            <pre class="am-pre-scrollable"><template v-for="item in data"><span class="am-text-success">[{{ item.time }}]</span> <span class="am-text-danger">[{{ item.admin.name }}]</span> [{{ item.ip }}] 执行了以下操作：{{ item.content}}<br></template></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content end -->
+</div>
+
+<!--[if lt IE 9]>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__PUBLIC__/resource/assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="//cdn.bootcss.com/jquery/2.0.2/jquery.min.js"></script>
+<script src="__PUBLIC__/resource/layer/layer.js"></script>
+<script src="__PUBLIC__/resource/assets/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/resource/assets/js/hw-layer.js"></script>
+<script src="__PUBLIC__/resource/assets/js/app.js"></script>
+<script>
+    var vm = new Vue({
+        el: 'body',
+        data: {
+            data : {$data}
+        },
+        methods: {
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验光详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/??sm.min.css,sm-extend.min.css">
+    <script type='text/javascript' src='{:C('CDN_PATH')}__PUBLIC__/resource/hw/js/config.js?{:C('CDN_VERSION')}' charset='utf-8'></script>
+    <script type='text/javascript' src='{:C('CDN_PATH')}__PUBLIC__/resource/hw/js/demos.js?{:C('CDN_VERSION')}' charset='utf-8'></script>
+    <style>
+        .hezuo,.hua{margin: 20px 15px;background: #ffffff;padding: 10px;}
+        .hua b{font-size: 14px;font-weight: normal;color: #000}
+        .hua p{font-size: 12px;margin-top: 0px;color: #898989}
+        .hua input[type='text'],textarea,.hua input[type='tel']{display: block; width: 100%;  height: 34px;  padding: 6px 12px;  font-size: 14px;  line-height: 1.42857143;  color: #555;  background-color: #fff;  background-image: none;  border: 1px solid #ccc;  border-radius: 4px;  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
+        textarea{height: 80px}
+        .hua input[type='button']{display: inline-block;width: 100%;  padding: 6px 12px;  margin-bottom: 0;  font-size: 14px;  font-weight: 400;  line-height: 1.42857143;
+            text-align: center;  white-space: nowrap;  vertical-align: middle;  -ms-touch-action: manipulation;  touch-action: manipulation;  cursor: pointer;  -webkit-user-select: none;  -moz-user-select: none;  -ms-user-select: none;  user-select: none;  color: #fff;  border: 1px solid transparent;  border-radius: 4px;background-color: #ff0043;  border-color: #ff0043;font-size: 15px;height: 35px;margin-top: 10px;}
+        .item-content{font-size: 0.65rem}
+    </style>
+</head>
+<body>
+<div class="">
+    <div class="list-block">
+
+            <ul>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-name"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">姓名</div>
+                            <div class="item-input">
+                                <p>{$data.name}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-email"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">左球面度数</div>
+                            <div class="item-input">
+                                <p>{$data.c_lball}</p>
+                            </div>
+                            <div class="item-title label">右球面度数</div>
+                            <div class="item-input">
+                                <p>{$data.c_rball}</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-email"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">左柱面度数</div>
+                            <div class="item-input">
+                                <p>{$data.c_lpole}</p>
+                            </div>
+                            <div class="item-title label">右柱面度数</div>
+                            <div class="item-input">
+                                <p>{$data.c_rpole}</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-email"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">左轴向</div>
+                            <div class="item-input">
+                                <p>{$data.c_laxes}</p>
+                            </div>
+                            <div class="item-title label">右轴向</div>
+                            <div class="item-input">
+                                <p>{$data.c_raxes}</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-email"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">左近瞳距</div>
+                            <div class="item-input">
+                                <p>{$data.c_lspace}</p>
+                            </div>
+                            <div class="item-title label">左远瞳距</div>
+                            <div class="item-input">
+                                <p>{$data.c_lspace2}</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-email"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">左轴向</div>
+                            <div class="item-input">
+                                <p>{$data.c_laxes}</p>
+                            </div>
+                            <div class="item-title label">右轴向</div>
+                            <div class="item-input">
+                                <p>{$data.c_raxes}</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-email"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">右近瞳距</div>
+                            <div class="item-input">
+                                <p>{$data.c_rspace}</p>
+                            </div>
+                            <div class="item-title label">右远瞳距</div>
+                            <div class="item-input">
+                                <p>{$data.c_rspace2}</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-email"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">左瞳高</div>
+                            <div class="item-input">
+                                <p>{$data. 	c_lhspace }</p>
+                            </div>
+                            <div class="item-title label">右瞳高</div>
+                            <div class="item-input">
+                                <p>{$data. 	c_rhspace  }</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-email"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">左矫正视力</div>
+                        <div class="item-input">
+                            <p>{$data.c_lcheck}</p>
+                        </div>
+                        <div class="item-title label">右矫正视力</div>
+                        <div class="item-input">
+                            <p>{$data.c_rcheck}</p>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-email"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">左裸视力</div>
+                        <div class="item-input">
+                            <p>{$data.c_lsign}</p>
+                        </div>
+                        <div class="item-title label">右裸视力</div>
+                        <div class="item-input">
+                            <p>{$data.c_rsign}</p>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-email"></i></div>
+                    <div class="item-inner">
+                        <div class="item-title label">左ADD</div>
+                        <div class="item-input">
+                            <p>{$data.c_ladd}</p>
+                        </div>
+                        <div class="item-title label">右ADD</div>
+                        <div class="item-input">
+                            <p>{$data.c_radd}</p>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-email"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">左原光</div>
+                            <div class="item-input">
+                                <p>{$data.c_llight}</p>
+                            </div>
+                            <div class="item-title label">右原光</div>
+                            <div class="item-input">
+                                <p>{$data.c_rlight}</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-email"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">左全矫光度</div>
+                            <div class="item-input">
+                                <p>{$data.c_lfoot}</p>
+                            </div>
+                            <div class="item-title label">右全矫光度</div>
+                            <div class="item-input">
+                                <p>{$data.c_rfoot}</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-email"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">左曲率</div>
+                            <div class="item-input">
+                                <p>{$data.c_lcurvature}</p>
+                            </div>
+                            <div class="item-title label">右曲率</div>
+                            <div class="item-input">
+                                <p>{$data.c_rcurvature}</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-email"></i></div>
+
+                        <div class="item-inner">
+                            <div class="item-title label">远瞳距</div>
+                            <div class="item-input">
+                                <p>{$data.c_space2}</p>
+                            </div>
+                            <div class="item-title label">验光师姓名</div>
+                            <div class="item-input">
+                                <p>{$data.c_empname}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-email"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">验光日期</div>
+                            <div class="item-input">
+                                <p>{$data.c_date}</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+    </div>
+</body>
+</html>
